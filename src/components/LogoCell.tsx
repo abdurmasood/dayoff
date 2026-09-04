@@ -1,8 +1,12 @@
 import { Cell } from './Cell'
 
-export function LogoCell() {
+type LogoCellProps = {
+  onClick?: () => void
+}
+
+export function LogoCell({ onClick }: LogoCellProps) {
   return (
-    <Cell className="c1">
+    <Cell className="c1" onClick={onClick}>
       <div className="c1-meta">
         SYS.OP.01
         <br />
