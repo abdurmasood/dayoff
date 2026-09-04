@@ -1,7 +1,14 @@
+'use client'
+
+import dynamic from 'next/dynamic'
 import { CornerBrackets } from './CornerBrackets'
 import { RecIndicator } from './RecIndicator'
-import { TunnelViewport } from './TunnelViewport'
 import { Waveform } from './Waveform'
+
+const TunnelViewport = dynamic(
+  () => import('./TunnelViewport').then((mod) => mod.TunnelViewport),
+  { ssr: false },
+)
 
 export function ConsoleRight() {
   return (

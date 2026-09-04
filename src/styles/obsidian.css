@@ -2,10 +2,10 @@
   --bg: #030303;
   --fg: #f0f0f0;
   --accent: #ff3b00;
-  --font-display: 'Oswald', sans-serif;
-  --font-wide: 'Syncopate', sans-serif;
-  --font-mono: 'Space Mono', monospace;
-  --font-kanji: 'Noto Sans JP', sans-serif;
+  --font-display: var(--font-oswald), sans-serif;
+  --font-wide: var(--font-syncopate), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+  --font-kanji: var(--font-noto-sans-jp), sans-serif;
 
   background-color: var(--bg);
   color: var(--fg);

@@ -1,5 +1,7 @@
+'use client'
+
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 type CellProps = {
   className: string
@@ -13,7 +15,7 @@ export function Cell({ className, noHover = false, to, children }: CellProps) {
 
   if (to) {
     return (
-      <Link to={to} className={classes}>
+      <Link href={to} className={classes}>
         {children}
       </Link>
     )
