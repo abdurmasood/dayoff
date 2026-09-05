@@ -114,18 +114,5 @@ export function TunnelViewport() {
     }
   }, [])
 
-  return (
-    <>
-      <canvas ref={canvasRef} className="tunnel-canvas" />
-      <svg className="tunnel-reticle" viewBox="0 0 100 100">
-        <path
-          d="M50 10 L90 50 L50 90 L10 50 Z"
-          fill="none"
-          stroke="var(--fg)"
-          strokeWidth="4"
-        />
-        <circle cx="50" cy="50" r="15" fill="var(--fg)" />
-      </svg>
-    </>
-  )
+  return <canvas ref={canvasRef} className="tunnel-canvas" />
 }

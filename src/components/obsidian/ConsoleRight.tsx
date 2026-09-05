@@ -1,21 +1,23 @@
-'use client'
-
-import dynamic from 'next/dynamic'
 import { CornerBrackets } from './CornerBrackets'
 import { RecIndicator } from './RecIndicator'
+import { TunnelViewportLoader } from './TunnelViewportLoader'
 import { Waveform } from './Waveform'
-
-const TunnelViewport = dynamic(
-  () => import('./TunnelViewport').then((mod) => mod.TunnelViewport),
-  { ssr: false },
-)
 
 export function ConsoleRight() {
   return (
     <div className="console-right">
       <CornerBrackets />
       <div className="tunnel-viewport">
-        <TunnelViewport />
+        <TunnelViewportLoader />
+        <svg className="tunnel-reticle" viewBox="0 0 100 100">
+          <path
+            d="M50 10 L90 50 L50 90 L10 50 Z"
+            fill="none"
+            stroke="var(--fg)"
+            strokeWidth="4"
+          />
+          <circle cx="50" cy="50" r="15" fill="var(--fg)" />
+        </svg>
       </div>
       <div className="section-title">MANIFESTO</div>
       <div className="data-footer">
