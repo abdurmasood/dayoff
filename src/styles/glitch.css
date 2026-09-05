@@ -8,7 +8,7 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background-color: var(--bg);
+  background-color: transparent;
   color: var(--fg);
   font-family: var(--mono);
   text-transform: uppercase;
@@ -19,7 +19,9 @@
   grid-template-rows: 1.5fr 3fr 1fr;
   gap: 0;
   border: var(--border);
+  border-color: transparent;
   cursor: none;
+  pointer-events: none;
 }
 
 .glitch,
@@ -35,11 +37,22 @@
 .glitch-cell {
   border-right: var(--border);
   border-bottom: var(--border);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-clip: padding-box;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: background-color 0s, color 0s;
+  visibility: hidden;
+  background-color: var(--bg);
+  pointer-events: none;
+}
+
+.glitch-cell.glitch-on {
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .glitch-cell:hover {
@@ -61,8 +74,7 @@
 }
 
 .glitch-scanlines {
-  grid-area: 1 / 1;
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   background: repeating-linear-gradient(
@@ -72,7 +84,7 @@
     rgba(255, 255, 255, 0.08) 2px,
     rgba(255, 255, 255, 0.08) 4px
   );
-  z-index: 9998;
+  z-index: 20;
   animation: glitch-scanline-move 10s linear infinite;
 }
 

@@ -1,7 +1,13 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { StatusBlob } from '../StatusBlob'
+
+const CELL_COUNT = 10
+const DELAY_MIN_MS = 80
+const DELAY_MAX_MS = 250
+const GLITCH_MS = 5000
+const RECOVER_MS = 5000
 
 const NAV_ITEMS = ['01_ERR', '02_NULL', '03_VOID', '04_FAIL'] as const
 
@@ -88,9 +94,97 @@ class TextScramble {
   }
 }
 
-export function GlitchOverlay() {
+function shuffle<T>(items: T[]): T[] {
+  const next = [...items]
+  for (let i = next.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[next[i], next[j]] = [next[j], next[i]]
+  }
+  return next
+}
+
+function buildCascadeDelays(count: number): number[] {
+  const order = shuffle([...Array(count).keys()])
+  const delays = Array<number>(count).fill(0)
+  let elapsed = 0
+  for (const index of order) {
+    delays[index] = elapsed
+    elapsed += DELAY_MIN_MS + Math.random() * (DELAY_MAX_MS - DELAY_MIN_MS)
+  }
+  return delays
+}
+
+function scaleDelays(delays: number[], duration: number): number[] {
+  const span = Math.max(...delays)
+  if (span === 0) return delays.map(() => 0)
+  return delays.map((delay) => (delay / span) * duration)
+}
+
+function cellClass(index: number, active: boolean[], extra = '') {
+  return `glitch-cell${extra ? ` ${extra}` : ''}${active[index] ? ' glitch-on' : ''}`
+}
+
+function GlitchCell({
+  index,
+  active,
+  extra,
+  children,
+}: {
+  index: number
+  active: boolean[]
+  extra?: string
+  children: ReactNode
+}) {
+  return (
+    <div className={cellClass(index, active, extra)}>
+      {children}
+      <div className="glitch-scanlines" />
+    </div>
+  )
+}
+
+type GlitchOverlayProps = {
+  onComplete: () => void
+}
+
+export function GlitchOverlay({ onComplete }: GlitchOverlayProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const patternRef = useRef<HTMLDivElement>(null)
+  const onCompleteRef = useRef(onComplete)
+  const [active, setActive] = useState(() => Array<boolean>(CELL_COUNT).fill(false))
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  }, [onComplete])
+
+  useEffect(() => {
+    const infectDelays = buildCascadeDelays(CELL_COUNT)
+    const recoverOffsets = scaleDelays(buildCascadeDelays(CELL_COUNT), RECOVER_MS)
+
+    const setCell = (index: number, on: boolean) => {
+      setActive((prev) => {
+        if (prev[index] === on) return prev
+        const next = [...prev]
+        next[index] = on
+        return next
+      })
+    }
+
+    const ids = [
+      ...infectDelays.map((delay, index) =>
+        window.setTimeout(() => setCell(index, true), delay),
+      ),
+      ...recoverOffsets.map((offset, index) =>
+        window.setTimeout(() => setCell(index, false), GLITCH_MS + offset),
+      ),
+    ]
+    ids.push(
+      window.setTimeout(() => onCompleteRef.current(), GLITCH_MS + RECOVER_MS),
+    )
+    return () => {
+      ids.forEach((id) => window.clearTimeout(id))
+    }
+  }, [])
 
   useEffect(() => {
     const root = rootRef.current
@@ -183,7 +277,7 @@ export function GlitchOverlay() {
 
   return (
     <div ref={rootRef} className="glitch">
-      <div className="glitch-cell glitch-c1">
+      <GlitchCell index={0} active={active} extra="glitch-c1">
         <div className="glitch-c1-meta">
           ERR.FATAL.01
           <br />
@@ -209,13 +303,13 @@ export function GlitchOverlay() {
           <line x1="20" y1="20" x2="80" y2="80" stroke="red" strokeWidth="6" />
           <line x1="80" y1="20" x2="20" y2="80" stroke="red" strokeWidth="6" />
         </svg>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c2 glitch-no-hover">
+      <GlitchCell index={1} active={active} extra="glitch-c2 glitch-no-hover">
         <div className="glitch-c2-text">CONNECTION LOST</div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c3 glitch-col-4">
+      <GlitchCell index={2} active={active} extra="glitch-c3 glitch-col-4">
         <div className="glitch-c3-text">DATA CORRUPTED</div>
         <svg
           width="120"
@@ -240,9 +334,9 @@ export function GlitchOverlay() {
           <line x1="140" y1="90" x2="190" y2="110" stroke="white" strokeWidth="2" />
           <line x1="60" y1="70" x2="10" y2="90" stroke="white" strokeWidth="2" />
         </svg>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c4">
+      <GlitchCell index={3} active={active} extra="glitch-c4">
         <ul className="glitch-nav-list">
           {NAV_ITEMS.map((item) => (
             <li key={item}>{item}</li>
@@ -254,21 +348,21 @@ export function GlitchOverlay() {
           SHREDDED BY HOSTILE ENVIRONMENTS. 0% RECOVERY. 0% SIGNAL. TOTAL
           COMPROMISE. ISOLATION COMPLETE.
         </div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c5">
+      <GlitchCell index={4} active={active} extra="glitch-c5">
         <div className="glitch-c5-overlay" />
         <div className="glitch-c5-labels">
           <span>FIG NULL. SIGNAL LOST</span>
           <span>FATAL EXCEPTION</span>
         </div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c6">
+      <GlitchCell index={5} active={active} extra="glitch-c6">
         <div className="glitch-c6-inner">SYNTHETIC</div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c7 glitch-col-4">
+      <GlitchCell index={6} active={active} extra="glitch-c7 glitch-col-4">
         <svg
           className="glitch-scrambled-wave"
           width="100%"
@@ -310,9 +404,9 @@ export function GlitchOverlay() {
             fill="none"
           />
         </svg>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c8 glitch-row-3">
+      <GlitchCell index={7} active={active} extra="glitch-c8 glitch-row-3">
         <div className="glitch-data-row">
           <span>ERR:</span>
           <span>0x00000F</span>
@@ -324,9 +418,9 @@ export function GlitchOverlay() {
         <div ref={patternRef} className="glitch-pattern-text">
           {PATTERN_TEXT}
         </div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c9 glitch-row-3">
+      <GlitchCell index={8} active={active} extra="glitch-c9 glitch-row-3">
         <div className="glitch-c9-text">TERMINATED</div>
         <div className="glitch-marquee-container">
           <div className="glitch-marquee-content">
@@ -334,14 +428,12 @@ export function GlitchOverlay() {
             NO BACKUP FOUND /// CONNECTION SEVERED ///
           </div>
         </div>
-      </div>
+      </GlitchCell>
 
-      <div className="glitch-cell glitch-c10 glitch-col-4 glitch-row-3">
+      <GlitchCell index={9} active={active} extra="glitch-c10 glitch-col-4 glitch-row-3">
         <StatusBlob fill="red" />
         <div className="glitch-sys-status">OFFLINE // ERR</div>
-      </div>
-
-      <div className="glitch-scanlines" />
+      </GlitchCell>
     </div>
   )
 }
