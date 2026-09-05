@@ -1,11 +1,13 @@
+'use client'
+
 import { useState } from 'react'
 import type { Product, StickerKind } from './products'
+import { useRawSupplyCart } from './raw-supply-cart'
 
 type CartStatus = 'idle' | 'adding' | 'added'
 
 type ProductCardProps = {
   product: Product
-  onAddToCart: () => void
 }
 
 function LimitedBarcode() {
@@ -84,14 +86,15 @@ function ProductSticker({ kind }: { kind: StickerKind }) {
   )
 }
 
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useRawSupplyCart()
   const [status, setStatus] = useState<CartStatus>('idle')
 
   function handleAdd() {
     if (status !== 'idle') return
     setStatus('adding')
     window.setTimeout(() => {
-      onAddToCart()
+      addToCart()
       setStatus('added')
       window.setTimeout(() => setStatus('idle'), 1500)
     }, 500)

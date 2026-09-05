@@ -1,19 +1,11 @@
 import { ProductCard } from './ProductCard'
 import { PRODUCTS } from './products'
 
-type RawSupplyGridProps = {
-  onAddToCart: () => void
-}
-
-export function RawSupplyGrid({ onAddToCart }: RawSupplyGridProps) {
+export function RawSupplyGrid() {
   return (
     <main className="shop-container">
       {PRODUCTS.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onAddToCart={onAddToCart}
-        />
+        <ProductCard key={product.id} product={product} />
       ))}
     </main>
   )
