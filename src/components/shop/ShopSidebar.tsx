@@ -47,10 +47,15 @@ export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
         <ul className="nav-list">
           {DEPARTMENTS.map((item) => {
             const active = item.id === 'tops'
-            return (
-              <li key={item.label} className={active ? 'active' : undefined}>
+            const label = (
+              <>
                 <span>{item.label}</span>
                 {active ? <span>←</span> : null}
+              </>
+            )
+            return (
+              <li key={item.label} className={active ? 'active' : undefined}>
+                {'href' in item ? <Link href={item.href}>{label}</Link> : label}
               </li>
             )
           })}

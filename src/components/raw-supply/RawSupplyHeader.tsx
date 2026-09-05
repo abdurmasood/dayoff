@@ -45,11 +45,7 @@ export function RawSupplyHeader({ cartCount }: RawSupplyHeaderProps) {
       <div className="cart-btn solid-shadow">
         CART [{cartCount}] <span className="cart-arrow">→</span>
       </div>
-      <h1 className="massive-title">
-        RAW
-        <br />
-        SUPPLY.
-      </h1>
+      <h1 className="massive-title">ACCESSORIES.</h1>
       <div className="subtitle-block">
         <div>
           <span className="spec-line">COLLECTION: 001</span>

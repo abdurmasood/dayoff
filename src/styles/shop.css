@@ -86,6 +86,13 @@
   transition: opacity 0.2s;
 }
 
+.shop .nav-list a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .shop .nav-list li:hover {
   opacity: 1;
   text-decoration: none;

@@ -3,7 +3,7 @@ import { RawSupplyPage } from '@/components/raw-supply/RawSupplyPage'
 import '@/styles/raw-supply.css'
 
 export const metadata: Metadata = {
-  title: 'RAW SUPPLY',
+  title: 'Accessories',
 }
 
 export default function RawSupplyRoute() {

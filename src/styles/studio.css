@@ -273,18 +273,20 @@ a.cell:visited {
   color: white;
 }
 
-.cell.c6 {
-  background-color: var(--fg);
-  color: var(--bg);
+.cell.c6,
+a.cell.c6:visited {
+  background-color: var(--bg);
+  color: var(--fg);
   justify-content: center;
   align-items: center;
   padding: 1rem;
   overflow: hidden;
 }
 
-.cell.c6:hover {
-  background-color: var(--bg);
-  color: var(--fg);
+.cell.c6:hover,
+a.cell.c6:hover {
+  background-color: var(--fg);
+  color: var(--bg);
 }
 
 .c6-inner {

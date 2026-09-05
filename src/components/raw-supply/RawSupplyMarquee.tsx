@@ -2,7 +2,7 @@ const MARQUEE_ITEMS = [
   '*** SYSTEM INITIALIZED ***',
   'NO RESTOCKS // ALL SALES FINAL',
   'GLOBAL SHIPPING AVAILABLE',
-  'RAW SUPPLY CO. FW/24',
+  'ACCESSORIES CO. FW/24',
 ] as const
 
 export function RawSupplyMarquee() {
