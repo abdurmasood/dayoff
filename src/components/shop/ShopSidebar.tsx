@@ -1,17 +1,10 @@
 import Link from 'next/link'
+import { DEPARTMENTS } from '@/lib/departments'
 import type { FilterItem } from './filters'
 
-const NAV_ITEMS = [
-  { label: '01_SHOP', active: true },
-  { label: '02_COLLECTIONS', active: false },
-  { label: '03_CAMPAIGN', active: false },
-  { label: '04_INFO', active: false },
-] as const
-
 type ShopSidebarProps = {
-  categories: FilterItem[]
   materials: FilterItem[]
-  onToggleFilter: (group: 'category' | 'material', id: string) => void
+  onToggleFilter: (id: string) => void
 }
 
 function FilterRow({
@@ -32,11 +25,7 @@ function FilterRow({
   )
 }
 
-export function ShopSidebar({
-  categories,
-  materials,
-  onToggleFilter,
-}: ShopSidebarProps) {
+export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
   return (
     <div className="sidebar">
       <div>
@@ -56,32 +45,25 @@ export function ShopSidebar({
         </Link>
 
         <ul className="nav-list">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.label} className={item.active ? 'active' : undefined}>
-              <span>{item.label}</span>
-              {item.active ? <span>←</span> : null}
-            </li>
-          ))}
+          {DEPARTMENTS.map((item) => {
+            const active = item.id === 'tops'
+            return (
+              <li key={item.label} className={active ? 'active' : undefined}>
+                <span>{item.label}</span>
+                {active ? <span>←</span> : null}
+              </li>
+            )
+          })}
         </ul>
 
         <div className="filters">
-          <div className="filter-group">
-            <div className="filter-title">CATEGORY</div>
-            {categories.map((item) => (
-              <FilterRow
-                key={item.id}
-                item={item}
-                onToggle={() => onToggleFilter('category', item.id)}
-              />
-            ))}
-          </div>
           <div className="filter-group">
             <div className="filter-title">MATERIAL</div>
             {materials.map((item) => (
               <FilterRow
                 key={item.id}
                 item={item}
-                onToggle={() => onToggleFilter('material', item.id)}
+                onToggle={() => onToggleFilter(item.id)}
               />
             ))}
           </div>

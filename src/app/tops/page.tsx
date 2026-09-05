@@ -3,9 +3,9 @@ import { ShopPage } from '@/components/shop/ShopPage'
 import '@/styles/shop.css'
 
 export const metadata: Metadata = {
-  title: 'Shop',
+  title: 'Tops',
 }
 
-export default function ShopRoute() {
+export default function TopsRoute() {
   return <ShopPage />
 }

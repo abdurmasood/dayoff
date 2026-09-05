@@ -2,7 +2,7 @@ import { Cell } from './Cell'
 
 export function EditorialCell() {
   return (
-    <Cell className="c5" to="/shop">
+    <Cell className="c5" to="/tops">
       <div className="c5-frame">
         <div className="c5-scanlines" />
         <div className="c5-reticle">

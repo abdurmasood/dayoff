@@ -18,7 +18,7 @@ export function ShopMain({ cartCount, onAddToCart }: ShopMainProps) {
       </div>
 
       <div className="top-bar">
-        <div className="page-title">SHOP_GRID</div>
+        <div className="page-title">TOPS_GRID</div>
         <div>SHOWING: 1-6 OF 28 ITEMS</div>
         <div className="cart-btn">CART [{cartCount}]</div>
       </div>
