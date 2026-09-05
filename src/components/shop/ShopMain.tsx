@@ -1,5 +1,6 @@
 import { ProductCard } from './ProductCard'
 import { PRODUCTS } from './products'
+import { ShopMarquee } from './ShopMarquee'
 
 type ShopMainProps = {
   cartCount: number
@@ -9,18 +10,14 @@ type ShopMainProps = {
 export function ShopMain({ cartCount, onAddToCart }: ShopMainProps) {
   return (
     <div className="main-content">
-      <div className="marquee-container">
-        <div className="marquee-content">
-          INVENTORY UPDATE /// AW&apos;24 SUBTERRANEAN COLLECTION NOW AVAILABLE
-          /// WARNING: GARMENTS MAY CAUSE ABRASION /// DESIGNED FOR EXTREME
-          CONDITIONS ONLY ///
-        </div>
-      </div>
+      <ShopMarquee />
 
       <div className="top-bar">
         <div className="page-title">TOPS_GRID</div>
         <div>SHOWING: 1-6 OF 28 ITEMS</div>
-        <div className="cart-btn">CART [{cartCount}]</div>
+        <div className="cart-btn">
+          CART [{cartCount}] <span className="cart-arrow">→</span>
+        </div>
       </div>
 
       <div className="shop-grid">

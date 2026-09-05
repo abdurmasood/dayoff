@@ -3,15 +3,16 @@
 import { useEffect, useRef } from 'react'
 
 const MARQUEE_TEXT =
-  '*** SYSTEM INITIALIZED *** // NO RESTOCKS // ALL SALES FINAL // GLOBAL SHIPPING AVAILABLE // ACCESSORIES CO. FW/24 // '
+  '// FW24 COLLECTION // NEW ARRIVALS // GLOBAL SHIPPING // NO REFUNDS // '
 
-export function RawSupplyMarquee() {
+export function ComfortableMarquee() {
   const trackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const track = trackRef.current
-    const first = track?.querySelector('.raw-marquee-copy')
+    const first = track?.querySelector('.comfortable-marquee-copy')
     if (!track || !(first instanceof HTMLElement)) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     let animation: Animation | undefined
 
@@ -38,13 +39,13 @@ export function RawSupplyMarquee() {
   }, [])
 
   return (
-    <div className="raw-marquee">
-      <div className="raw-marquee-track" ref={trackRef}>
-        <span className="raw-marquee-copy">{MARQUEE_TEXT}</span>
-        <span className="raw-marquee-copy" aria-hidden>
+    <div className="comfortable-marquee">
+      <div className="comfortable-marquee-track" ref={trackRef}>
+        <span className="comfortable-marquee-copy">{MARQUEE_TEXT}</span>
+        <span className="comfortable-marquee-copy" aria-hidden>
           {MARQUEE_TEXT}
         </span>
-        <span className="raw-marquee-copy" aria-hidden>
+        <span className="comfortable-marquee-copy" aria-hidden>
           {MARQUEE_TEXT}
         </span>
       </div>
