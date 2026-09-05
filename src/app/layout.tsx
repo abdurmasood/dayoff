@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_JP, Oswald, Space_Mono, Syncopate } from 'next/font/google'
+import { SiteCursor } from '@/components/SiteCursor'
+import '@/styles/cursor.css'
 import '@/styles/studio.css'
 
 const oswald = Oswald({
@@ -44,7 +46,10 @@ export default function RootLayout({
       lang="en"
       className={`${oswald.variable} ${spaceMono.variable} ${syncopate.variable} ${notoSansJp.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SiteCursor />
+        {children}
+      </body>
     </html>
   )
 }

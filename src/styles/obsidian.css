@@ -19,11 +19,6 @@
   position: relative;
 }
 
-.obsidian,
-.obsidian * {
-  cursor: crosshair;
-}
-
 .obsidian .texture-overlay {
   position: fixed;
   top: 0;

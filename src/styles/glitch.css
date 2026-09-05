@@ -60,27 +60,6 @@
   border-bottom: none;
 }
 
-.glitch-cursor {
-  grid-area: 1 / 1;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--fg);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition:
-    transform 0.1s,
-    background-color 0.2s;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-}
-
-.glitch-cursor.glitch-cursor-active {
-  transform: translate(-50%, -50%) scale(2);
-  background: var(--fg);
-}
-
 .glitch-scanlines {
   grid-area: 1 / 1;
   position: fixed;

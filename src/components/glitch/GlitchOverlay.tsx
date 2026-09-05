@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { StatusBlob } from '../StatusBlob'
 
 const NAV_ITEMS = ['01_ERR', '02_NULL', '03_VOID', '04_FAIL'] as const
@@ -91,36 +91,6 @@ class TextScramble {
 export function GlitchOverlay() {
   const rootRef = useRef<HTMLDivElement>(null)
   const patternRef = useRef<HTMLDivElement>(null)
-  const [cursor, setCursor] = useState({ x: -100, y: -100, active: false })
-
-  useEffect(() => {
-    const root = rootRef.current
-    if (!root) return
-
-    const onMove = (event: MouseEvent) => {
-      setCursor((current) => ({
-        ...current,
-        x: event.clientX,
-        y: event.clientY,
-      }))
-    }
-    const onDown = () => {
-      setCursor((current) => ({ ...current, active: true }))
-    }
-    const onUp = () => {
-      setCursor((current) => ({ ...current, active: false }))
-    }
-
-    root.addEventListener('mousemove', onMove)
-    root.addEventListener('mousedown', onDown)
-    window.addEventListener('mouseup', onUp)
-
-    return () => {
-      root.removeEventListener('mousemove', onMove)
-      root.removeEventListener('mousedown', onDown)
-      window.removeEventListener('mouseup', onUp)
-    }
-  }, [])
 
   useEffect(() => {
     const root = rootRef.current
@@ -372,10 +342,6 @@ export function GlitchOverlay() {
       </div>
 
       <div className="glitch-scanlines" />
-      <div
-        className={`glitch-cursor${cursor.active ? ' glitch-cursor-active' : ''}`}
-        style={{ left: cursor.x, top: cursor.y }}
-      />
     </div>
   )
 }
