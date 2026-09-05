@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DEPARTMENTS } from '@/lib/departments'
+import { DepartmentNav } from '@/components/DepartmentNav'
 import type { FilterItem } from './filters'
 
 type ShopSidebarProps = {
@@ -44,22 +44,7 @@ export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
           </svg>
         </Link>
 
-        <ul className="nav-list">
-          {DEPARTMENTS.map((item) => {
-            const active = item.id === 'tops'
-            const label = (
-              <>
-                <span>{item.label}</span>
-                {active ? <span>←</span> : null}
-              </>
-            )
-            return (
-              <li key={item.label} className={active ? 'active' : undefined}>
-                {'href' in item ? <Link href={item.href}>{label}</Link> : label}
-              </li>
-            )
-          })}
-        </ul>
+        <DepartmentNav activeId="tops" className="nav-list" />
 
         <div className="filters">
           <div className="filter-group">

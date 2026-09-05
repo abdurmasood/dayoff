@@ -4,3 +4,5 @@ export const DEPARTMENTS = [
   { id: 'accessories', label: '03_ACCESSORIES', href: '/raw-supply' },
   { id: 'comfortable', label: '04_COMFORTABLE' },
 ] as const
+
+export type DepartmentId = (typeof DEPARTMENTS)[number]['id']

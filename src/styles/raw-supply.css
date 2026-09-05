@@ -125,7 +125,45 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.raw-supply .department-nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.raw-supply .department-nav li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.4;
+}
+
+.raw-supply .department-nav li.active {
+  opacity: 1;
+}
+
+.raw-supply .department-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.raw-supply .department-nav li:has(> a):hover {
+  opacity: 1;
+}
+
+.raw-supply .department-nav a:hover {
+  text-decoration: line-through;
 }
 
 .raw-supply .system-code:hover {

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { DepartmentNav } from '@/components/DepartmentNav'
 
 type RawSupplyHeaderProps = {
   cartCount: number
@@ -42,6 +43,7 @@ export function RawSupplyHeader({ cartCount }: RawSupplyHeaderProps) {
         <span className="system-code-arrow">←</span>
         Day Off
       </Link>
+      <DepartmentNav activeId="accessories" className="department-nav" />
       <div className="cart-btn solid-shadow">
         CART [{cartCount}] <span className="cart-arrow">→</span>
       </div>
