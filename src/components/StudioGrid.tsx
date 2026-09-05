@@ -9,14 +9,10 @@ import { StatusCell } from './StatusCell'
 import { SubterraneanCell } from './SubterraneanCell'
 import { SyntheticCell } from './SyntheticCell'
 
-type StudioGridProps = {
-  onLogoClick?: () => void
-}
-
-export function StudioGrid({ onLogoClick }: StudioGridProps) {
+export function StudioGrid() {
   return (
     <main className="studio">
-      <LogoCell onClick={onLogoClick} />
+      <LogoCell />
       <HeroCell />
       <ArchitecturalCell />
       <NavCell />

@@ -1,41 +1,36 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function SiteCursor() {
-  const [cursor, setCursor] = useState({
-    x: -100,
-    y: -100,
-    active: false,
-    hoverLink: false,
-  })
+  const cursorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const el = cursorRef.current
+    if (!el) return
+
     const isHeader = (node: EventTarget | null) =>
       node instanceof Element && Boolean(node.closest('.sidebar-header'))
 
     const onMove = (event: MouseEvent) => {
-      setCursor((current) => ({
-        ...current,
-        x: event.clientX,
-        y: event.clientY,
-        hoverLink: isHeader(event.target),
-      }))
+      el.style.left = `${event.clientX}px`
+      el.style.top = `${event.clientY}px`
+      el.classList.toggle('hover-link', isHeader(event.target))
     }
     const onDown = () => {
-      setCursor((current) => ({ ...current, active: true }))
+      el.classList.add('active')
     }
     const onUp = () => {
-      setCursor((current) => ({ ...current, active: false }))
+      el.classList.remove('active')
     }
     const onOver = (event: MouseEvent) => {
       if (!isHeader(event.target)) return
-      setCursor((current) => ({ ...current, hoverLink: true }))
+      el.classList.add('hover-link')
     }
     const onOut = (event: MouseEvent) => {
       if (isHeader(event.relatedTarget)) return
       if (!isHeader(event.target)) return
-      setCursor((current) => ({ ...current, hoverLink: false }))
+      el.classList.remove('hover-link')
     }
 
     window.addEventListener('mousemove', onMove)
@@ -53,13 +48,11 @@ export function SiteCursor() {
     }
   }, [])
 
-  const className = [
-    'custom-cursor',
-    cursor.hoverLink ? 'hover-link' : '',
-    cursor.active ? 'active' : '',
-  ]
-    .filter(Boolean)
-    .join(' ')
-
-  return <div className={className} style={{ left: cursor.x, top: cursor.y }} />
+  return (
+    <div
+      ref={cursorRef}
+      className="custom-cursor"
+      style={{ left: -100, top: -100 }}
+    />
+  )
 }
