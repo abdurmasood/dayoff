@@ -178,6 +178,9 @@
 
 .obsidian .tunnel-reticle {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
   z-index: 20;
@@ -219,10 +222,9 @@
 }
 
 .obsidian .rec-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
+  flex-shrink: 0;
+  margin-top: 1.5rem;
   font-family: var(--font-wide);
   font-size: 0.8rem;
   display: flex;

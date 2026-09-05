@@ -83,10 +83,13 @@ export function TunnelViewport() {
       if (width === 0 || height === 0) return
       camera.aspect = width / height
       camera.updateProjectionMatrix()
-      renderer.setSize(width, height)
+      renderer.setSize(width, height, false)
     }
 
     setSize()
+
+    const observer = new ResizeObserver(setSize)
+    observer.observe(parent)
 
     let time = 0
     let frame = 0
@@ -104,6 +107,7 @@ export function TunnelViewport() {
 
     return () => {
       cancelAnimationFrame(frame)
+      observer.disconnect()
       window.removeEventListener('resize', setSize)
       disposables.forEach((item) => item.dispose())
       renderer.dispose()
