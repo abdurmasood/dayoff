@@ -1,11 +1,20 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { GlitchStartContext } from './glitch/glitch-start'
 
+function GlitchOverlayUnavailable({ onComplete }: { onComplete: () => void }) {
+  useEffect(() => {
+    onComplete()
+  }, [onComplete])
+  return null
+}
+
 const GlitchOverlay = dynamic(() =>
-  import('./glitch/GlitchOverlay').then((mod) => mod.GlitchOverlay),
+  import('./glitch/GlitchOverlay')
+    .then((mod) => mod.GlitchOverlay)
+    .catch(() => GlitchOverlayUnavailable),
 )
 
 export function StudioExperience({ children }: { children: ReactNode }) {
