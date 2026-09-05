@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import { DepartmentNav } from '@/components/DepartmentNav'
-
-type RawSupplyHeaderProps = {
-  cartCount: number
-}
+import { RawSupplyCartBadge } from './RawSupplyCartBadge'
 
 function HeaderBarcode() {
   return (
@@ -36,7 +33,7 @@ function HeaderBarcode() {
   )
 }
 
-export function RawSupplyHeader({ cartCount }: RawSupplyHeaderProps) {
+export function RawSupplyHeader() {
   return (
     <header className="page-header">
       <Link href="/" className="system-code">
@@ -44,9 +41,7 @@ export function RawSupplyHeader({ cartCount }: RawSupplyHeaderProps) {
         Day Off
       </Link>
       <DepartmentNav activeId="accessories" className="department-nav" />
-      <div className="cart-btn solid-shadow">
-        CART [{cartCount}] <span className="cart-arrow">→</span>
-      </div>
+      <RawSupplyCartBadge />
       <h1 className="massive-title">ACCESSORIES.</h1>
       <div className="subtitle-block">
         <div>
