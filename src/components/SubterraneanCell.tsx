@@ -6,7 +6,7 @@ const MARQUEE_TEXT =
 
 export function SubterraneanCell() {
   return (
-    <Cell className="c9 row-3">
+    <Cell className="c9 row-3" to="/void">
       <div className="c9-text">SUBTERRANEAN</div>
       <Marquee text={MARQUEE_TEXT} />
     </Cell>
