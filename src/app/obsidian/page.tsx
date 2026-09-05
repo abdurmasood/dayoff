@@ -3,7 +3,7 @@ import { ObsidianPage } from '@/components/obsidian/ObsidianPage'
 import '@/styles/obsidian.css'
 
 export const metadata: Metadata = {
-  title: 'OBSIDIAN // GARMENT ENGINEERING',
+  title: 'Obsidian',
 }
 
 export default function ObsidianRoute() {

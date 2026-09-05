@@ -30,7 +30,10 @@ const notoSansJp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'A/A/V/V - FASHION STUDIO',
+  title: {
+    default: 'Day Off',
+    template: '%s | Day Off',
+  },
   icons: {
     icon: '/favicon.svg',
   },

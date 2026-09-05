@@ -3,7 +3,7 @@ import { ShopPage } from '@/components/shop/ShopPage'
 import '@/styles/shop.css'
 
 export const metadata: Metadata = {
-  title: 'A/A/V/V - SHOP_GRID',
+  title: 'Shop',
 }
 
 export default function ShopRoute() {
