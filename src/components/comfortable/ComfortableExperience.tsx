@@ -1,22 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-import { ComfortableGrid } from './ComfortableGrid'
-import { ComfortableHeader } from './ComfortableHeader'
-import { ComfortableMarquee } from './ComfortableMarquee'
-import { GrainCanvas } from './GrainCanvas'
+import { useCallback, useState, type ReactNode } from 'react'
+import { ComfortableCartContext } from './comfortable-cart'
 
-export function ComfortableExperience() {
+export function ComfortableExperience({ children }: { children: ReactNode }) {
   const [cartCount, setCartCount] = useState(0)
+  const addToCart = useCallback(() => {
+    setCartCount((count) => count + 1)
+  }, [])
 
   return (
-    <div className="comfortable">
-      <GrainCanvas />
-      <ComfortableMarquee />
-      <div className="comfortable-app">
-        <ComfortableHeader cartCount={cartCount} />
-        <ComfortableGrid onAddToCart={() => setCartCount((count) => count + 1)} />
-      </div>
-    </div>
+    <ComfortableCartContext.Provider value={{ cartCount, addToCart }}>
+      {children}
+    </ComfortableCartContext.Provider>
   )
 }

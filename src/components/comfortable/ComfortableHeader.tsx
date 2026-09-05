@@ -1,11 +1,8 @@
 import Link from 'next/link'
 import { DepartmentNav } from '@/components/DepartmentNav'
+import { ComfortableCartBadge } from './ComfortableCartBadge'
 
-type ComfortableHeaderProps = {
-  cartCount: number
-}
-
-export function ComfortableHeader({ cartCount }: ComfortableHeaderProps) {
+export function ComfortableHeader() {
   return (
     <header className="page-header">
       <Link href="/" className="index-link">
@@ -15,9 +12,7 @@ export function ComfortableHeader({ cartCount }: ComfortableHeaderProps) {
         <span className="index-link-label">Day Off</span>
       </Link>
       <DepartmentNav activeId="comfortable" className="department-nav" />
-      <button type="button" className="cart-btn">
-        CART [{cartCount}] <span className="cart-arrow">→</span>
-      </button>
+      <ComfortableCartBadge />
     </header>
   )
 }

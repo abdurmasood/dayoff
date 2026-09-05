@@ -1,12 +1,14 @@
+'use client'
+
 import { useState } from 'react'
 import type { Product } from './products'
+import { useComfortableCart } from './comfortable-cart'
 
 type CartStatus = 'idle' | 'adding' | 'added'
 
 type ProductCardProps = {
   product: Product
   cardClass: string
-  onAddToCart: () => void
 }
 
 function TitleLines({ name, className }: { name: string; className: string }) {
@@ -26,15 +28,15 @@ function TitleLines({ name, className }: { name: string; className: string }) {
 export function ProductCard({
   product,
   cardClass,
-  onAddToCart,
 }: ProductCardProps) {
+  const { addToCart } = useComfortableCart()
   const [status, setStatus] = useState<CartStatus>('idle')
 
   function handleAdd() {
     if (product.soldOut || status !== 'idle') return
     setStatus('adding')
     window.setTimeout(() => {
-      onAddToCart()
+      addToCart()
       setStatus('added')
       window.setTimeout(() => setStatus('idle'), 1500)
     }, 500)
