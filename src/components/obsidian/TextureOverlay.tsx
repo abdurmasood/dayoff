@@ -128,6 +128,7 @@ export function TextureOverlay() {
     const startTime = Date.now()
     let frame = 0
     let disposed = false
+    const fallback = canvas.previousElementSibling
 
     function draw(timeMs: number) {
       if (disposed) return
@@ -149,11 +150,13 @@ export function TextureOverlay() {
     }
 
     resize()
+    if (fallback instanceof HTMLElement) fallback.hidden = true
     window.addEventListener('resize', resize)
     frame = requestAnimationFrame(render)
 
     return () => {
       disposed = true
+      if (fallback instanceof HTMLElement) fallback.hidden = false
       cancelAnimationFrame(frame)
       window.removeEventListener('resize', resize)
       gl.deleteBuffer(buffer)
@@ -163,5 +166,10 @@ export function TextureOverlay() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="texture-overlay" />
+  return (
+    <>
+      <div className="texture-fallback" aria-hidden />
+      <canvas ref={canvasRef} className="texture-overlay" />
+    </>
+  )
 }

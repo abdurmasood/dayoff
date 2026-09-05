@@ -19,7 +19,8 @@
   position: relative;
 }
 
-.obsidian .texture-overlay {
+.obsidian .texture-overlay,
+.obsidian .texture-fallback {
   position: fixed;
   top: 0;
   left: 0;
@@ -28,6 +29,18 @@
   pointer-events: none;
   z-index: 999;
   mix-blend-mode: screen;
+}
+
+.obsidian .texture-fallback {
+  background:
+    radial-gradient(
+      ellipse 22vmin 22vmin at 90% 10%,
+      rgba(255, 26, 0, 0.9) 0%,
+      rgba(255, 204, 0, 0.4) 40%,
+      transparent 72%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  background-size: auto, 180px 180px;
 }
 
 .obsidian .system-container {
