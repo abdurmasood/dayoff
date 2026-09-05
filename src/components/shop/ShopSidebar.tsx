@@ -1,31 +1,9 @@
 import Link from 'next/link'
 import { DepartmentNav } from '@/components/DepartmentNav'
-import type { FilterItem } from './filters'
+import { INITIAL_MATERIALS } from './filters'
+import { ShopFilterRow } from './ShopFilterRow'
 
-type ShopSidebarProps = {
-  materials: FilterItem[]
-  onToggleFilter: (id: string) => void
-}
-
-function FilterRow({
-  item,
-  onToggle,
-}: {
-  item: FilterItem
-  onToggle: () => void
-}) {
-  const mark = item.checked ? '[X]' : '[ ]'
-  return (
-    <button type="button" className="filter-item" onClick={onToggle}>
-      <span>
-        {mark} {item.label}
-      </span>
-      {item.count ? <span>{item.count}</span> : null}
-    </button>
-  )
-}
-
-export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
+export function ShopSidebar() {
   return (
     <div className="sidebar">
       <div>
@@ -49,12 +27,8 @@ export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
         <div className="filters">
           <div className="filter-group">
             <div className="filter-title">MATERIAL</div>
-            {materials.map((item) => (
-              <FilterRow
-                key={item.id}
-                item={item}
-                onToggle={() => onToggleFilter(item.id)}
-              />
+            {INITIAL_MATERIALS.map((item) => (
+              <ShopFilterRow key={item.id} item={item} />
             ))}
           </div>
         </div>

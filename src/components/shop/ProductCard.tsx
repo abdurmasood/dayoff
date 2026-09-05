@@ -1,21 +1,20 @@
+'use client'
+
 import { useState } from 'react'
 import type { Product } from './products'
+import { useShopCart } from './shop-cart'
 
 type CartStatus = 'idle' | 'adding' | 'added'
 
-type ProductCardProps = {
-  product: Product
-  onAddToCart: () => void
-}
-
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useShopCart()
   const [status, setStatus] = useState<CartStatus>('idle')
 
   function handleAdd() {
     if (product.soldOut || status !== 'idle') return
     setStatus('adding')
     window.setTimeout(() => {
-      onAddToCart()
+      addToCart()
       setStatus('added')
       window.setTimeout(() => setStatus('idle'), 1500)
     }, 500)
