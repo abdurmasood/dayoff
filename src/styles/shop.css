@@ -194,6 +194,32 @@
   border-color: var(--fg);
 }
 
+.shop .cart-arrow {
+  display: inline-block;
+  margin-left: 0.5em;
+}
+
+.shop .cart-btn:hover .cart-arrow {
+  display: inline-block;
+  animation: shop-cart-nudge 1.5s ease-in-out infinite;
+}
+
+@keyframes shop-cart-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop .cart-btn:hover .cart-arrow {
+    animation: none;
+  }
+}
+
 .shop .page-title {
   font-family: var(--sans);
   font-size: 1.5rem;
