@@ -117,11 +117,11 @@ export function VoidExperience() {
           {phase === 'idle' ? (
             <>
               <div className="action-title">
-                ENTER
+                Hear
                 <br />
-                ARCHIVE
+                From Us
               </div>
-              <div className="action-sub">INITIATE SEQUENCE [ENTER]</div>
+              <div className="action-sub">Never miss a drop [ENTER]</div>
             </>
           ) : null}
           {phase === 'loading' ? (
