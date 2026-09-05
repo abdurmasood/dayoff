@@ -311,7 +311,8 @@ a.cell.c6:hover {
   letter-spacing: -1px;
 }
 
-.c7:hover svg path {
+.c7:hover svg path,
+a.cell.c7:hover svg path {
   fill: var(--bg);
   stroke: var(--bg);
 }
