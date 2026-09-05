@@ -268,7 +268,7 @@
   cursor: default;
 }
 
-.comfortable .marquee {
+.comfortable .comfortable-marquee {
   position: fixed;
   left: 0;
   top: 0;
@@ -286,18 +286,14 @@
   white-space: nowrap;
 }
 
-.comfortable .marquee-content {
-  display: inline-block;
-  animation: comfortable-scroll 15s linear infinite;
+.comfortable .comfortable-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: none !important;
 }
 
-@keyframes comfortable-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.comfortable .comfortable-marquee-copy {
+  flex-shrink: 0;
 }
 
 .comfortable .text-only-card {
@@ -353,7 +349,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .comfortable .marquee-content,
   .comfortable .cart-btn:hover .cart-arrow {
     animation: none;
   }
