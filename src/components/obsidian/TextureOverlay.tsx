@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 const VS_SOURCE = `
   attribute vec2 position;
@@ -89,12 +89,15 @@ function compileShader(gl: WebGLRenderingContext, type: number, source: string) 
 export function TextureOverlay() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+  useLayoutEffect(() => {
+    const surface = canvasRef.current
+    if (!surface) return
 
-    const gl = canvas.getContext('webgl')
-    if (!gl) return
+    const context = surface.getContext('webgl')
+    if (!context) return
+
+    const canvas = surface
+    const gl = context
 
     const program = gl.createProgram()
     if (!program) return
@@ -124,25 +127,36 @@ export function TextureOverlay() {
     const timeLoc = gl.getUniformLocation(program, 'time')
     const startTime = Date.now()
     let frame = 0
+    let disposed = false
+    const fallback = canvas.previousElementSibling
 
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      gl.viewport(0, 0, canvas.width, canvas.height)
-    }
-
-    const render = () => {
-      frame = requestAnimationFrame(render)
+    function draw(timeMs: number) {
+      if (disposed) return
       gl.uniform2f(resLoc, canvas.width, canvas.height)
-      gl.uniform1f(timeLoc, (Date.now() - startTime) * 0.001)
+      gl.uniform1f(timeLoc, timeMs * 0.001)
       gl.drawArrays(gl.TRIANGLES, 0, 6)
     }
 
-    window.addEventListener('resize', resize)
+    function resize() {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      gl.viewport(0, 0, canvas.width, canvas.height)
+      draw(0)
+    }
+
+    function render() {
+      draw(Date.now() - startTime)
+      frame = requestAnimationFrame(render)
+    }
+
     resize()
-    render()
+    if (fallback instanceof HTMLElement) fallback.hidden = true
+    window.addEventListener('resize', resize)
+    frame = requestAnimationFrame(render)
 
     return () => {
+      disposed = true
+      if (fallback instanceof HTMLElement) fallback.hidden = false
       cancelAnimationFrame(frame)
       window.removeEventListener('resize', resize)
       gl.deleteBuffer(buffer)
@@ -152,5 +166,10 @@ export function TextureOverlay() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="texture-overlay" />
+  return (
+    <>
+      <div className="texture-fallback" aria-hidden />
+      <canvas ref={canvasRef} className="texture-overlay" />
+    </>
+  )
 }
