@@ -17,7 +17,7 @@ export function ObscuroPage() {
         </div>
 
         <div className="header-main-row display-text">
-          <span className="hover-invert">OBSCURO</span>
+          <span className="hover-invert accent">OBSCURO</span>
           <span className="hover-invert">STUDIO</span>
         </div>
         <div className="header-sub-row display-text">
@@ -98,7 +98,7 @@ export function ObscuroPage() {
         </div>
         <div className="footer-main-row display-text">
           <span className="hover-invert">STUDIO</span>
-          <span className="hover-invert">OBSCURO</span>
+          <span className="hover-invert accent">OBSCURO</span>
         </div>
 
         <div className="data-text corner-data corner-bl">

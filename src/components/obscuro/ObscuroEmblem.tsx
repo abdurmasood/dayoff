@@ -2,7 +2,6 @@ export function ObscuroEmblem() {
   return (
     <div className="emblem-container">
       <svg className="emblem-svg" viewBox="0 0 200 200">
-        <ellipse cx="100" cy="100" rx="85" ry="40" className="emblem-path" />
         <path
           id="obscuro-text-path"
           d="M 100, 10 a 90, 90 0 1,1 0, 180 a 90, 90 0 1,1 0, -180"
@@ -10,10 +9,7 @@ export function ObscuroEmblem() {
         />
         <text>
           <textPath href="#obscuro-text-path" startOffset="0" className="emblem-text">
-            02025 ARCHITECTURE IS OUR GARMENT *{' '}
-          </textPath>
-          <textPath href="#obscuro-text-path" startOffset="50%" className="emblem-text">
-            02025 ARCHITECTURE IS OUR GARMENT *{' '}
+            02025 ARCHITECTURE * IS OUR GARMENT * LONDON 51.50N * FW.25 *{' '}
           </textPath>
         </text>
       </svg>
