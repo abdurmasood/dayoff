@@ -14,7 +14,9 @@ export function ConsoleRight() {
   return (
     <div className="console-right">
       <CornerBrackets />
-      <TunnelViewport />
+      <div className="tunnel-viewport">
+        <TunnelViewport />
+      </div>
       <div className="section-title">PROTOTYPE</div>
       <div className="data-footer">
         <Waveform variant="left" />
