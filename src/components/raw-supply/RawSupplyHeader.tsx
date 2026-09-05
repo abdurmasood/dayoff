@@ -39,7 +39,8 @@ export function RawSupplyHeader({ cartCount }: RawSupplyHeaderProps) {
   return (
     <header className="page-header">
       <Link href="/" className="system-code">
-        SYS.REQ_094 // INVENTORY
+        <span className="system-code-arrow">←</span>
+        Day Off
       </Link>
       <div className="cart-btn solid-shadow">
         CART [{cartCount}] <span className="cart-arrow">→</span>
