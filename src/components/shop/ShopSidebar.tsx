@@ -61,7 +61,9 @@ export function ShopSidebar({ materials, onToggleFilter }: ShopSidebarProps) {
       </div>
 
       <div className="sidebar-footer">
-        SYS.OP.01 // 48°52&apos;5&quot;N 2°19&apos;59&quot;E
+        SYS.OP.01 // London, United Kingdom
+        <br />
+        51°30&apos;27&quot;N 0°07&apos;40&quot;W
         <br />
         ALL SALES FINAL.
         <br />

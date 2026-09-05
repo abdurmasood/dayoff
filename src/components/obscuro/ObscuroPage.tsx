@@ -6,8 +6,8 @@ export function ObscuroPage() {
     <div className="obscuro">
       <header>
         <div className="data-text corner-data corner-tl">
-          <span>SYS.LOC // 48.8566 N</span>
-          <span>2.3522 E // PARIS</span>
+          <span>SYS.LOC // 51.5074 N</span>
+          <span>0.1278 W // London, United Kingdom</span>
           <span>STATUS // ONLINE</span>
         </div>
         <div className="data-text corner-data corner-tr">
