@@ -1,25 +1,26 @@
 'use client'
 
-import { useState } from 'react'
-import { GlitchOverlay } from './glitch/GlitchOverlay'
-import { StudioGrid } from './StudioGrid'
+import dynamic from 'next/dynamic'
+import { useCallback, useState, type ReactNode } from 'react'
+import { GlitchStartContext } from './glitch/glitch-start'
 
-export function StudioExperience() {
+const GlitchOverlay = dynamic(() =>
+  import('./glitch/GlitchOverlay').then((mod) => mod.GlitchOverlay),
+)
+
+export function StudioExperience({ children }: { children: ReactNode }) {
   const [glitching, setGlitching] = useState(false)
 
+  const startGlitch = useCallback(() => {
+    setGlitching((current) => current || true)
+  }, [])
+
   return (
-    <>
-      <div inert={glitching || undefined}>
-        <StudioGrid
-          onLogoClick={() => {
-            if (glitching) return
-            setGlitching(true)
-          }}
-        />
-      </div>
+    <GlitchStartContext.Provider value={startGlitch}>
+      <div inert={glitching || undefined}>{children}</div>
       {glitching ? (
         <GlitchOverlay onComplete={() => setGlitching(false)} />
       ) : null}
-    </>
+    </GlitchStartContext.Provider>
   )
 }

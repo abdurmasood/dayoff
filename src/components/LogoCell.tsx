@@ -1,12 +1,13 @@
+'use client'
+
 import { Cell } from './Cell'
+import { useGlitchStart } from './glitch/glitch-start'
 
-type LogoCellProps = {
-  onClick?: () => void
-}
+export function LogoCell() {
+  const startGlitch = useGlitchStart()
 
-export function LogoCell({ onClick }: LogoCellProps) {
   return (
-    <Cell className="c1" onClick={onClick}>
+    <Cell className="c1" onClick={startGlitch}>
       <div className="c1-meta">
         SYS.OP.01
         <br />
