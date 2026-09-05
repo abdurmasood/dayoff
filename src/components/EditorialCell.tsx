@@ -1,12 +1,15 @@
 import { Cell } from './Cell'
 
-const EDITORIAL_SRC =
-  'https://images.pexels.com/photos/20349457/pexels-photo-20349457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-
 export function EditorialCell() {
   return (
     <Cell className="c5" to="/shop">
-      <img src={EDITORIAL_SRC} alt="Fashion Editorial" />
+      <div className="c5-frame">
+        <div className="c5-scanlines" />
+        <div className="c5-reticle">
+          <div className="c5-reticle-h" />
+          <div className="c5-reticle-v" />
+        </div>
+      </div>
       <div className="c5-labels">
         <span>FIG 01. KEVLAR VEST</span>
         <span>AW'24 SUBTERRANEAN</span>
