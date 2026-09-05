@@ -7,6 +7,7 @@ export type Product = {
   material: string
   image: string
   soldOut?: boolean
+  rare?: boolean
 }
 
 export const PRODUCTS: Product[] = [
@@ -18,7 +19,8 @@ export const PRODUCTS: Product[] = [
     ref: '8892-A',
     material: 'BALLISTIC',
     image:
-      'https://images.pexels.com/photos/20349457/pexels-photo-20349457.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600',
+    rare: true,
   },
   {
     id: '7710-B',
@@ -29,6 +31,7 @@ export const PRODUCTS: Product[] = [
     material: 'NYLON-RIPSTOP',
     image:
       'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600',
+    rare: true,
   },
   {
     id: '4421-C',
@@ -38,7 +41,7 @@ export const PRODUCTS: Product[] = [
     ref: '4421-C',
     material: 'TYVEK',
     image:
-      'https://images.pexels.com/photos/20349457/pexels-photo-20349457.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600',
     soldOut: true,
   },
   {
@@ -59,7 +62,7 @@ export const PRODUCTS: Product[] = [
     ref: '9980-E',
     material: 'CORDURA',
     image:
-      'https://images.pexels.com/photos/20349457/pexels-photo-20349457.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     id: '2234-F',

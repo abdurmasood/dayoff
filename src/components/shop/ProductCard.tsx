@@ -33,6 +33,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <div className={`product-card${product.soldOut ? ' sold-out' : ''}`}>
       <div className="product-image-container">
+        {product.rare && <div className="product-meta">RARE</div>}
         <img src={product.image} alt={product.name} />
       </div>
       <div className="product-info">
