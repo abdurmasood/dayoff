@@ -46,10 +46,7 @@
   box-shadow: 2px 2px 0px var(--fg);
 }
 
-.raw-supply .marquee-container {
-  position: static;
-  bottom: auto;
-  left: auto;
+.raw-supply .raw-marquee {
   width: 100%;
   overflow: hidden;
   background: var(--fg);
@@ -59,27 +56,17 @@
   font-size: 0.9rem;
   letter-spacing: 0.1em;
   white-space: nowrap;
-  border-top: none;
   border-bottom: var(--border-w) solid var(--fg);
-  z-index: auto;
 }
 
-.raw-supply .marquee-content {
-  display: inline-block;
-  animation: raw-supply-marquee 15s linear infinite;
+.raw-supply .raw-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: none !important;
 }
 
-.raw-supply .marquee-content span {
-  margin-right: 2rem;
-}
-
-@keyframes raw-supply-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.raw-supply .raw-marquee-copy {
+  flex-shrink: 0;
 }
 
 .raw-supply .page-header {
