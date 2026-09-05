@@ -273,7 +273,7 @@ a.cell:visited {
   color: white;
 }
 
-.c6 {
+.cell.c6 {
   background-color: var(--fg);
   color: var(--bg);
   justify-content: center;
@@ -282,7 +282,7 @@ a.cell:visited {
   overflow: hidden;
 }
 
-.c6:hover {
+.cell.c6:hover {
   background-color: var(--bg);
   color: var(--fg);
 }
