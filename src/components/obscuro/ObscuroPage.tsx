@@ -67,7 +67,10 @@ export function ObscuroPage() {
         </div>
 
         <nav>
-          <Link href="/" className="nav-link">
+          <Link href="/" className="nav-link nav-home">
+            <span className="nav-home-arrow" aria-hidden>
+              ←
+            </span>
             DAY OFF
           </Link>
           <Link href="/tops" className="nav-link">

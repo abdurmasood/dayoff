@@ -271,6 +271,16 @@
   z-index: 20;
 }
 
+.obscuro .nav-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+}
+
+.obscuro .nav-home-arrow {
+  line-height: 1;
+}
+
 .obscuro .nav-link {
   color: var(--secondary);
   text-decoration: none;
