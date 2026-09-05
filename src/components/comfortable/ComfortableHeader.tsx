@@ -12,7 +12,9 @@ export function ComfortableHeader({ cartCount }: ComfortableHeaderProps) {
         Day Off
       </Link>
       <DepartmentNav activeId="comfortable" className="department-nav" />
-      <div className="cart-status">CART ( {String(cartCount).padStart(2, '0')} )</div>
+      <button type="button" className="cart-btn">
+        CART [{cartCount}] <span className="cart-arrow">→</span>
+      </button>
     </header>
   )
 }
