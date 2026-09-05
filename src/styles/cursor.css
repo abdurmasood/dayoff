@@ -1,0 +1,33 @@
+html,
+body,
+* {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #eaeaea;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    background 0.2s;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hover-link {
+  width: 40px;
+  height: 40px;
+  background: #eaeaea;
+}
+
+.custom-cursor.active {
+  transform: translate(-50%, -50%) scale(0.8);
+}

@@ -5,7 +5,7 @@ const EDITORIAL_SRC =
 
 export function EditorialCell() {
   return (
-    <Cell className="c5">
+    <Cell className="c5" to="/shop">
       <img src={EDITORIAL_SRC} alt="Fashion Editorial" />
       <div className="c5-labels">
         <span>FIG 01. KEVLAR VEST</span>
