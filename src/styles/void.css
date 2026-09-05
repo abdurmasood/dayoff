@@ -1,6 +1,7 @@
 .void {
   --paper: #f0f0f0;
   --ink: #141414;
+  --ground: #e0ddd6;
   --font-mono: var(--font-space-mono), monospace;
   --pad: 1.5rem;
 
@@ -8,7 +9,7 @@
   z-index: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--paper);
+  background-color: var(--ground);
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: 13px;
@@ -140,27 +141,53 @@
 
 .void .brand-name {
   display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 1rem;
-  line-height: 1;
-  letter-spacing: 0;
+  align-items: stretch;
   background: var(--ink);
   color: var(--paper);
-  padding: 0.4rem 0.7rem;
-  border-radius: 1px;
-  transition: all 0.1s steps(2);
+  border: 2px solid var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+  line-height: 1;
+  transition:
+    background 0.1s steps(2),
+    color 0.1s steps(2),
+    border-color 0.1s steps(2),
+    box-shadow 0.1s ease,
+    transform 0.1s ease;
 }
 
 .void .brand-back {
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.5rem;
+  border-right: 2px solid var(--paper);
+  font-size: 0.8rem;
   letter-spacing: 0;
-  line-height: 1;
+}
+
+.void .brand-label {
+  display: flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem 0.45rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 
 .void .brand-name:hover {
   background: var(--paper);
   color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 var(--paper);
+}
+
+.void .brand-name:hover .brand-back {
+  border-right-color: var(--ink);
+}
+
+.void .brand-name:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 
 .void .center-stage {

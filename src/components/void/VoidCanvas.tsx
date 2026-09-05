@@ -87,8 +87,8 @@ const FS_SOURCE = `
         float finalInk = smoothstep(threshold - edgeSoftness, threshold + edgeSoftness, inkDensity);
 
         // 6. Colors based on the inventory
-        vec3 paperColor = vec3(0.95, 0.95, 0.95); // #f0f0f0 approx
-        vec3 inkColor = vec3(0.08, 0.08, 0.08); // #141414 approx
+        vec3 paperColor = vec3(0.88, 0.87, 0.84); // #e0ddd6 approx
+        vec3 inkColor = vec3(0.08, 0.08, 0.07);
 
         // 7. Add global static/grain to the whole image
         float globalGrain = hash(gl_FragCoord.xy * 0.01 + uTime) * 0.1;

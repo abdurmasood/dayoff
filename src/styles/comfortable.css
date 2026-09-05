@@ -72,7 +72,22 @@
   color: white;
 }
 
+.comfortable .index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.comfortable .index-link-arrow {
+  line-height: 1;
+  text-decoration: none;
+}
+
 .comfortable .index-link:hover {
+  text-decoration: none;
+}
+
+.comfortable .index-link:hover .index-link-label {
   text-decoration: underline;
 }
 

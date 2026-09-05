@@ -85,7 +85,7 @@ export function VoidExperience() {
             <span className="brand-back" aria-hidden>
               ←
             </span>
-            Day Off
+            <span className="brand-label">Day Off</span>
           </Link>
         </div>
         <div className="text-small text-right">
