@@ -17,7 +17,7 @@ export function ConsoleRight() {
       <div className="tunnel-viewport">
         <TunnelViewport />
       </div>
-      <div className="section-title">PROTOTYPE</div>
+      <div className="section-title">MANIFESTO</div>
       <div className="data-footer">
         <Waveform variant="left" />
         <div className="manifesto-text">

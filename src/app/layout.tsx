@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_JP, Oswald, Space_Mono, Syncopate } from 'next/font/google'
+import {
+  JetBrains_Mono,
+  Noto_Sans_JP,
+  Oswald,
+  Space_Mono,
+  Syncopate,
+  Syne,
+} from 'next/font/google'
 import { SiteCursor } from '@/components/SiteCursor'
 import '@/styles/cursor.css'
 import '@/styles/studio.css'
@@ -29,6 +36,18 @@ const notoSansJp = Noto_Sans_JP({
   variable: '--font-noto-sans-jp',
 })
 
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-syne',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-jetbrains-mono',
+})
+
 export const metadata: Metadata = {
   title: {
     default: 'Day Off',
@@ -47,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${oswald.variable} ${spaceMono.variable} ${syncopate.variable} ${notoSansJp.variable}`}
+      className={`${oswald.variable} ${spaceMono.variable} ${syncopate.variable} ${notoSansJp.variable} ${syne.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <SiteCursor />

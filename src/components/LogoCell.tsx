@@ -10,9 +10,11 @@ export function LogoCell({ onClick }: LogoCellProps) {
       <div className="c1-meta">
         SYS.OP.01
         <br />
-        48°52'5"N
+        London, United Kingdom
         <br />
-        2°19'59"E
+        51°30'27"N
+        <br />
+        0°07'40"W
       </div>
       <svg
         width="80"
