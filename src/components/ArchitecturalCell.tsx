@@ -2,7 +2,7 @@ import { Cell } from './Cell'
 
 export function ArchitecturalCell() {
   return (
-    <Cell className="c3 col-4" to="/obsidian">
+    <Cell className="c3 col-4" to="/manifesto">
       <div className="c3-text">ARCHITECTURAL GARMENTS</div>
       <svg
         width="120"

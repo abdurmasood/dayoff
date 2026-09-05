@@ -2,7 +2,10 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return [{ source: '/shop', destination: '/tops', permanent: true }]
+    return [
+      { source: '/shop', destination: '/tops', permanent: true },
+      { source: '/obsidian', destination: '/manifesto', permanent: true },
+    ]
   },
 }
 
