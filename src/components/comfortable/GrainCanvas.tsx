@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 const VS_SOURCE = `
 attribute vec2 position;
@@ -69,7 +69,7 @@ function createShader(
 export function GrainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const surface = canvasRef.current
     if (!surface) return
 
@@ -132,9 +132,7 @@ export function GrainCanvas() {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
       gl.viewport(0, 0, canvas.width, canvas.height)
-      if (reduceMotion.matches) {
-        draw(0)
-      }
+      draw(0)
     }
 
     let frame = 0
