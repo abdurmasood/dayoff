@@ -1,6 +1,6 @@
 export const DEPARTMENTS = [
   { id: 'tops', label: '01_TOPS', href: '/tops' },
-  { id: 'jackets', label: '02_JACKETS' },
+  { id: 'jackets', label: '02_JACKETS', href: '/jackets' },
   { id: 'accessories', label: '03_ACCESSORIES', href: '/accessories' },
   { id: 'comfortable', label: '04_COMFORTABLE', href: '/comfortable' },
 ] as const

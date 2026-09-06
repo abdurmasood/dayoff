@@ -31,3 +31,12 @@ body,
 .custom-cursor.active {
   transform: translate(-50%, -50%) scale(0.8);
 }
+
+.custom-cursor.on-pink {
+  border-color: #eb6baf;
+  z-index: 10000;
+}
+
+.custom-cursor.on-pink.hover-link {
+  background: #eb6baf;
+}

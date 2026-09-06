@@ -8,11 +8,7 @@ export function NavCell() {
       <ul className="nav-list">
         {DEPARTMENTS.map((item) => (
           <li key={item.label}>
-            {'href' in item ? (
-              <Link href={item.href}>{item.label}</Link>
-            ) : (
-              item.label
-            )}
+            <Link href={item.href}>{item.label}</Link>
           </li>
         ))}
       </ul>
