@@ -1,9 +1,11 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 export function SiteCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
+  const onPink = usePathname() === '/void-garments'
 
   useEffect(() => {
     const el = cursorRef.current
@@ -51,7 +53,7 @@ export function SiteCursor() {
   return (
     <div
       ref={cursorRef}
-      className="custom-cursor"
+      className={onPink ? 'custom-cursor on-pink' : 'custom-cursor'}
       style={{ left: -100, top: -100 }}
     />
   )

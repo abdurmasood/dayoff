@@ -1,19 +1,12 @@
-import Link from 'next/link'
 import { DEPARTMENTS } from '@/lib/departments'
 import { Cell } from './Cell'
 
 export function NavCell() {
   return (
-    <Cell className="c4">
+    <Cell className="c4" to="/void-garments">
       <ul className="nav-list">
         {DEPARTMENTS.map((item) => (
-          <li key={item.label}>
-            {'href' in item ? (
-              <Link href={item.href}>{item.label}</Link>
-            ) : (
-              item.label
-            )}
-          </li>
+          <li key={item.label}>{item.label}</li>
         ))}
       </ul>
       <div className="manifesto">
