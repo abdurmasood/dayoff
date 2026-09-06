@@ -101,7 +101,6 @@ export function VoidEnterControl() {
             name="email"
             value={email}
             autoComplete="email"
-            autoFocus
             spellCheck={false}
             placeholder="you@email.com"
             aria-label="Email"

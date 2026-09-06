@@ -255,6 +255,11 @@
   text-transform: uppercase;
 }
 
+.void .action-input::selection {
+  background: var(--paper);
+  color: var(--ink);
+}
+
 .void .action-honeypot {
   position: absolute;
   width: 1px;
