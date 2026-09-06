@@ -48,6 +48,19 @@
   opacity: 0.35;
 }
 
+.jackets .jackets-marquee {
+  display: none;
+}
+
+.jackets .jackets-marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.jackets .jackets-marquee-copy {
+  flex-shrink: 0;
+}
+
 .jackets .svg-filters {
   position: absolute;
   width: 0;
@@ -470,12 +483,29 @@
     min-height: 100dvh;
     overflow: visible;
     padding: 0;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
+  }
+
+  .jackets .jackets-marquee {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 2rem;
+    overflow: hidden;
+    background: var(--ink-color);
+    color: var(--bg-color);
+    font-family: var(--jackets-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   .jackets .poster {
     max-width: none;
-    padding: 0.85rem 1rem 1.25rem;
+    padding: 1rem 1rem 1.25rem;
   }
 
   .jackets .poster:not(.poster-product) .title-block,
@@ -508,6 +538,7 @@
       'brand cart'
       'nav nav';
     align-items: center;
+    row-gap: 0.75rem;
   }
 
   .jackets .index-link {
@@ -520,15 +551,20 @@
 
   .jackets .department-nav {
     grid-area: nav;
-    justify-content: flex-start;
-    gap: 0.45rem 0.75rem;
-    font-size: 0.62rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.4rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
     width: 100%;
   }
 
   .jackets .header-bar .cart-btn {
     grid-area: cart;
     justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
     padding: 0.3rem 0;
     border: 0;
     border-bottom: 2px solid var(--ink-color);

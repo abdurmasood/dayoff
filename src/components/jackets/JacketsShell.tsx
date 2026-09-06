@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react'
+import { JacketsMarquee } from './JacketsMarquee'
 import { JacketsNoise } from './JacketsNoise'
 
 export function JacketsShell({ children }: { children: ReactNode }) {
   return (
     <div className="jackets">
+      <JacketsMarquee />
       <svg className="svg-filters" aria-hidden>
         <defs>
           <filter
