@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { VoidGarmentsPage } from '@/components/void-garments/VoidGarmentsPage'
 
 export const metadata: Metadata = {
-  title: 'VOID GARMENTS',
+  title: 'JACKETS',
 }
 
-export default function VoidGarmentsRoute() {
+export default function JacketsRoute() {
   return <VoidGarmentsPage />
 }

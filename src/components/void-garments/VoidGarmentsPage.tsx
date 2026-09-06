@@ -42,7 +42,7 @@ export function VoidGarmentsPage() {
             {PRODUCTS.map((item) => (
               <Link
                 key={item.id}
-                href={`/void-garments/${item.id}`}
+                href={`/jackets/${item.id}`}
                 className="data-item"
               >
                 <span>[{item.id}]</span>

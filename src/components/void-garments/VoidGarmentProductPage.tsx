@@ -12,7 +12,7 @@ export function VoidGarmentProductPage({ product }: { product: LookbookItem }) {
       <div className="poster poster-product">
         <div className="header">
           <div className="header-left">
-            <Link href="/void-garments" className="mono header-home">
+            <Link href="/jackets" className="mono header-home">
               {'< BACK [INDEX]'}
             </Link>
             <span className="mono">ITEM {product.id} // FW/24</span>

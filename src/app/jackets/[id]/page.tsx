@@ -9,18 +9,18 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<'/void-garments/[id]'>): Promise<Metadata> {
+}: PageProps<'/jackets/[id]'>): Promise<Metadata> {
   const { id } = await params
   const product = getProduct(id)
   if (!product) {
-    return { title: 'VOID GARMENTS' }
+    return { title: 'JACKETS' }
   }
-  return { title: `VOID GARMENTS — ${product.name}` }
+  return { title: `JACKETS — ${product.name}` }
 }
 
-export default async function VoidGarmentProductRoute({
+export default async function JacketProductRoute({
   params,
-}: PageProps<'/void-garments/[id]'>) {
+}: PageProps<'/jackets/[id]'>) {
   const { id } = await params
   const product = getProduct(id)
   if (!product) {

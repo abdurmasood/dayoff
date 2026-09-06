@@ -3,7 +3,7 @@ import { Cell } from './Cell'
 
 export function NavCell() {
   return (
-    <Cell className="c4" to="/void-garments">
+    <Cell className="c4" to="/jackets">
       <ul className="nav-list">
         {DEPARTMENTS.map((item) => (
           <li key={item.label}>{item.label}</li>

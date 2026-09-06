@@ -7,7 +7,7 @@ export function SiteCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
   const onPink =
-    pathname === '/void-garments' || pathname.startsWith('/void-garments/')
+    pathname === '/jackets' || pathname.startsWith('/jackets/')
 
   useEffect(() => {
     const el = cursorRef.current
