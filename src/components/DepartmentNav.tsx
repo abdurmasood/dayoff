@@ -11,11 +11,7 @@ export function DepartmentNav({ activeId, className }: DepartmentNavProps) {
     <ul className={className}>
       {DEPARTMENTS.map((item) => (
         <li key={item.label} className={item.id === activeId ? 'active' : undefined}>
-          {'href' in item ? (
-            <Link href={item.href}>{item.label}</Link>
-          ) : (
-            item.label
-          )}
+          <Link href={item.href}>{item.label}</Link>
         </li>
       ))}
     </ul>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { VoidGarmentsChrome } from './VoidGarmentsChrome'
 import { PRODUCTS } from './products'
 import { VoidGarmentsShell } from './VoidGarmentsShell'
 
@@ -7,14 +8,13 @@ export function VoidGarmentsPage() {
     <VoidGarmentsShell>
       <div className="poster">
         <div className="header">
-          <Link href="/" className="mono">
+          <Link href="/" className="mono header-home">
             001
           </Link>
-          <span className="mono">FW/24</span>
+          <VoidGarmentsChrome />
         </div>
 
         <div className="title-block">
-          <h1 className="massive title-line title-void">VOID</h1>
           <h1 className="massive title-line garments">GARMENT</h1>
         </div>
 
@@ -57,15 +57,6 @@ export function VoidGarmentsPage() {
 
         <div className="sub-footer">
           <span className="distressed">JACKETS</span>
-        </div>
-
-        <h1 className="massive bottom-massive">SYNDICATE</h1>
-
-        <div className="footer">
-          <span className="mono">©2024 VOID ENT.</span>
-          <Link href="/" className="mono">
-            VOID-GARMENT.COM
-          </Link>
         </div>
       </div>
     </VoidGarmentsShell>
