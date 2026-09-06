@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import { VoidGarmentsChrome } from './VoidGarmentsChrome'
+import { JacketsChrome } from './JacketsChrome'
 import { PRODUCTS } from './products'
-import { VoidGarmentsShell } from './VoidGarmentsShell'
+import { JacketsShell } from './JacketsShell'
 
-export function VoidGarmentsPage() {
+export function JacketsPage() {
   return (
-    <VoidGarmentsShell>
+    <JacketsShell>
       <div className="poster">
         <div className="header">
-          <VoidGarmentsChrome />
+          <JacketsChrome />
         </div>
 
         <div className="title-block">
@@ -56,6 +56,6 @@ export function VoidGarmentsPage() {
           <span className="distressed">JACKETS</span>
         </div>
       </div>
-    </VoidGarmentsShell>
+    </JacketsShell>
   )
 }

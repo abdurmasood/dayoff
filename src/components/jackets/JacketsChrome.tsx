@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { DepartmentNav } from '@/components/DepartmentNav'
-import { VoidGarmentsCartBadge } from './VoidGarmentsCartBadge'
+import { JacketsCartBadge } from './JacketsCartBadge'
 
-export function VoidGarmentsChrome() {
+export function JacketsChrome() {
   return (
     <div className="header-bar">
       <Link href="/" className="index-link">
@@ -13,7 +13,7 @@ export function VoidGarmentsChrome() {
       </Link>
       <div className="header-tools">
         <DepartmentNav activeId="jackets" className="department-nav" />
-        <VoidGarmentsCartBadge />
+        <JacketsCartBadge />
       </div>
     </div>
   )

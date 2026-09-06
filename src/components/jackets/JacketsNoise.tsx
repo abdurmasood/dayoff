@@ -41,7 +41,7 @@ function createShader(
   return shader
 }
 
-export function VoidGarmentsNoise() {
+export function JacketsNoise() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useLayoutEffect(() => {

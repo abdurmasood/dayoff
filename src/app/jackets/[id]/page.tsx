@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { VoidGarmentProductPage } from '@/components/void-garments/VoidGarmentProductPage'
-import { getProduct, PRODUCTS } from '@/components/void-garments/products'
+import { JacketProductPage } from '@/components/jackets/JacketProductPage'
+import { getProduct, PRODUCTS } from '@/components/jackets/products'
 
 export async function generateStaticParams() {
   return PRODUCTS.map((item) => ({ id: item.id }))
@@ -27,5 +27,5 @@ export default async function JacketProductRoute({
     notFound()
   }
 
-  return <VoidGarmentProductPage product={product} />
+  return <JacketProductPage product={product} />
 }

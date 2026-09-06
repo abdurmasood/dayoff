@@ -1,16 +1,16 @@
 import type { LookbookItem } from './products'
-import { VoidGarmentsAddToCart } from './VoidGarmentsAddToCart'
-import { VoidGarmentsChrome } from './VoidGarmentsChrome'
-import { VoidGarmentsShell } from './VoidGarmentsShell'
+import { JacketsAddToCart } from './JacketsAddToCart'
+import { JacketsChrome } from './JacketsChrome'
+import { JacketsShell } from './JacketsShell'
 
-export function VoidGarmentProductPage({ product }: { product: LookbookItem }) {
+export function JacketProductPage({ product }: { product: LookbookItem }) {
   const titleLines = product.name.split(' ')
 
   return (
-    <VoidGarmentsShell>
+    <JacketsShell>
       <div className="poster poster-product">
         <div className="header">
-          <VoidGarmentsChrome />
+          <JacketsChrome />
           <span className="mono header-item">ITEM {product.id} // FW/24</span>
         </div>
 
@@ -35,10 +35,10 @@ export function VoidGarmentProductPage({ product }: { product: LookbookItem }) {
               <div className="product-desc">{product.description}</div>
             </div>
 
-            <VoidGarmentsAddToCart />
+            <JacketsAddToCart />
           </div>
         </div>
       </div>
-    </VoidGarmentsShell>
+    </JacketsShell>
   )
 }

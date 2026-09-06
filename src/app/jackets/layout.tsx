@@ -1,10 +1,10 @@
-import { VoidGarmentsExperience } from '@/components/void-garments/VoidGarmentsExperience'
-import '@/styles/void-garments.css'
+import { JacketsExperience } from '@/components/jackets/JacketsExperience'
+import '@/styles/jackets.css'
 
 export default function JacketsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <VoidGarmentsExperience>{children}</VoidGarmentsExperience>
+  return <JacketsExperience>{children}</JacketsExperience>
 }

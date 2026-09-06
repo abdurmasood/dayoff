@@ -1,9 +1,9 @@
 'use client'
 
-import { useVoidGarmentsCart } from './void-garments-cart'
+import { useJacketsCart } from './jackets-cart'
 
-export function VoidGarmentsCartBadge() {
-  const { cartCount } = useVoidGarmentsCart()
+export function JacketsCartBadge() {
+  const { cartCount } = useJacketsCart()
 
   return (
     <button type="button" className="cart-btn">

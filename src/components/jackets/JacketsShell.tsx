@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react'
-import { VoidGarmentsNoise } from './VoidGarmentsNoise'
+import { JacketsNoise } from './JacketsNoise'
 
-export function VoidGarmentsShell({ children }: { children: ReactNode }) {
+export function JacketsShell({ children }: { children: ReactNode }) {
   return (
-    <div className="void-garments">
+    <div className="jackets">
       <svg className="svg-filters" aria-hidden>
         <defs>
           <filter
-            id="void-garments-bleed"
+            id="jackets-bleed"
             x="-20%"
             y="-20%"
             width="140%"
@@ -47,7 +47,7 @@ export function VoidGarmentsShell({ children }: { children: ReactNode }) {
         </defs>
       </svg>
 
-      <VoidGarmentsNoise />
+      <JacketsNoise />
 
       {children}
     </div>
