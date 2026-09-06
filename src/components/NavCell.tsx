@@ -9,11 +9,13 @@ export function NavCell() {
   const { open } = useShopModal()
 
   return (
-    <Cell className="c4">
+    <Cell className="c4" onClick={open}>
       <ul className="nav-list">
         {DEPARTMENTS.map((item) => (
           <li key={item.label}>
-            <Link href={item.href}>{item.label}</Link>
+            <Link href={item.href} onClick={(e) => e.stopPropagation()}>
+              {item.label}
+            </Link>
           </li>
         ))}
       </ul>
@@ -22,7 +24,6 @@ export function NavCell() {
         className="manifesto"
         aria-haspopup="dialog"
         aria-label="Open shop index"
-        onClick={open}
       >
         <span aria-hidden="true">
           CLOTHING AS STRUCTURE. WE REJECT THE ORGANIC IN FAVOR OF THE SYNTHETIC.
