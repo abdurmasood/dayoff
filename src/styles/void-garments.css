@@ -1,10 +1,9 @@
 .void-garments {
   --bg-color: #eb6baf;
   --ink-color: #1f1e1e;
-  --vg-display: var(--font-display), 'Impact', 'Arial Black', sans-serif;
-  --vg-mono: var(--font-mono), 'Courier New', Courier, monospace;
-  --vg-distressed: var(--font-display), 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
+  --vg-display: 'Impact', 'Arial Black', sans-serif;
+  --vg-mono: 'Courier New', Courier, monospace;
+  --vg-distressed: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   position: relative;
   z-index: 0;
@@ -121,6 +120,11 @@
 
 .void-garments .header .mono {
   font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.void-garments .header a:hover {
+  background-color: var(--ink-color);
+  color: var(--bg-color);
 }
 
 .void-garments .title-block {
@@ -273,4 +277,105 @@
   align-items: flex-end;
   margin-top: 4%;
   padding-bottom: 1%;
+}
+
+.void-garments .poster.poster-product {
+  aspect-ratio: 1.33;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+@media (max-width: 900px) {
+  .void-garments .poster.poster-product {
+    aspect-ratio: auto;
+    min-height: 95vh;
+  }
+}
+
+.void-garments .poster-product .content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4%;
+  flex-grow: 1;
+}
+
+@media (max-width: 900px) {
+  .void-garments .poster-product .content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.void-garments .poster-product .image-col {
+  position: relative;
+  background-color: var(--ink-color);
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.void-garments .poster-product .placeholder-image {
+  width: 90%;
+  height: 90%;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  font-family: var(--vg-mono);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.void-garments .poster-product .info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.void-garments .poster-product .product-title {
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.8;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.void-garments .poster-product .product-price {
+  font-size: clamp(2rem, 4vw, 5rem);
+  margin-top: 5%;
+}
+
+.void-garments .poster-product .product-desc {
+  font-family: var(--vg-mono);
+  font-size: clamp(0.9rem, 1.2vw, 1.5rem);
+  line-height: 1.2;
+  margin-top: 5%;
+  font-weight: bold;
+  max-width: 90%;
+  text-transform: uppercase;
+}
+
+.void-garments .poster-product .add-to-cart {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(3rem, 6vw, 8rem);
+  border: none;
+  background: none;
+  color: var(--ink-color);
+  margin-top: 10%;
+  padding: 2% 0;
+  border-top: 4px solid var(--ink-color);
+  border-bottom: 4px solid var(--ink-color);
+  cursor: inherit;
+}
+
+.void-garments .poster-product .add-to-cart:hover {
+  background-color: var(--ink-color);
+  color: var(--bg-color);
 }

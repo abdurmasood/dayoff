@@ -1,55 +1,10 @@
 import Link from 'next/link'
 import { PRODUCTS } from './products'
-import { VoidGarmentsNoise } from './VoidGarmentsNoise'
+import { VoidGarmentsShell } from './VoidGarmentsShell'
 
 export function VoidGarmentsPage() {
   return (
-    <div className="void-garments">
-      <svg className="svg-filters" aria-hidden>
-        <defs>
-          <filter
-            id="void-garments-bleed"
-            x="-20%"
-            y="-20%"
-            width="140%"
-            height="140%"
-          >
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.6 0.1"
-              numOctaves="3"
-              result="noise"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="3"
-              xChannelSelector="R"
-              yChannelSelector="G"
-              result="displaced"
-            />
-            <feMorphology
-              operator="dilate"
-              radius="0.5"
-              in="displaced"
-              result="thickened"
-            />
-            <feColorMatrix
-              type="matrix"
-              values="
-                    0 0 0 0 0.12
-                    0 0 0 0 0.11
-                    0 0 0 0 0.11
-                    0 0 0 1 0
-                "
-              in="thickened"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <VoidGarmentsNoise />
-
+    <VoidGarmentsShell>
       <div className="poster">
         <div className="header">
           <Link href="/" className="mono">
@@ -85,11 +40,15 @@ export function VoidGarmentsPage() {
 
           <div className="data-list">
             {PRODUCTS.map((item) => (
-              <div key={item.id} className="data-item">
+              <Link
+                key={item.id}
+                href={`/void-garments/${item.id}`}
+                className="data-item"
+              >
                 <span>[{item.id}]</span>
                 <span>{item.name}</span>
                 <span>{item.price}</span>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -97,8 +56,7 @@ export function VoidGarmentsPage() {
         </div>
 
         <div className="sub-footer">
-          <span className="distressed">SUPPORT</span>
-          <span className="distressed">FROM</span>
+          <span className="distressed">JACKETS</span>
         </div>
 
         <h1 className="massive bottom-massive">SYNDICATE</h1>
@@ -110,6 +68,6 @@ export function VoidGarmentsPage() {
           </Link>
         </div>
       </div>
-    </div>
+    </VoidGarmentsShell>
   )
 }
