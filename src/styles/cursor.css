@@ -40,3 +40,15 @@ body,
 .custom-cursor.on-pink.hover-link {
   background: #eb6baf;
 }
+
+@media (hover: none), (pointer: coarse) {
+  html,
+  body,
+  * {
+    cursor: auto !important;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+}
