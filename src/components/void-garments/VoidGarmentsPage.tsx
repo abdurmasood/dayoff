@@ -8,9 +8,6 @@ export function VoidGarmentsPage() {
     <VoidGarmentsShell>
       <div className="poster">
         <div className="header">
-          <Link href="/" className="mono header-home">
-            001
-          </Link>
           <VoidGarmentsChrome />
         </div>
 

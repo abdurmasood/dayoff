@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { LookbookItem } from './products'
 import { VoidGarmentsAddToCart } from './VoidGarmentsAddToCart'
 import { VoidGarmentsChrome } from './VoidGarmentsChrome'
@@ -11,13 +10,8 @@ export function VoidGarmentProductPage({ product }: { product: LookbookItem }) {
     <VoidGarmentsShell>
       <div className="poster poster-product">
         <div className="header">
-          <div className="header-left">
-            <Link href="/jackets" className="mono header-home">
-              {'< BACK [INDEX]'}
-            </Link>
-            <span className="mono">ITEM {product.id} // FW/24</span>
-          </div>
           <VoidGarmentsChrome />
+          <span className="mono header-item">ITEM {product.id} // FW/24</span>
         </div>
 
         <div className="content-grid">
