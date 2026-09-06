@@ -22,16 +22,19 @@ export function ShopSidebar() {
           </svg>
         </Link>
 
-        <DepartmentNav activeId="tops" className="nav-list" />
+        <details className="shop-menu">
+          <summary>MENU</summary>
+          <DepartmentNav activeId="tops" className="nav-list" />
 
-        <div className="filters">
-          <div className="filter-group">
-            <div className="filter-title">MATERIAL</div>
-            {INITIAL_MATERIALS.map((item) => (
-              <ShopFilterRow key={item.id} item={item} />
-            ))}
+          <div className="filters">
+            <div className="filter-group">
+              <div className="filter-title">MATERIAL</div>
+              {INITIAL_MATERIALS.map((item) => (
+                <ShopFilterRow key={item.id} item={item} />
+              ))}
+            </div>
           </div>
-        </div>
+        </details>
       </div>
 
       <div className="sidebar-footer">
