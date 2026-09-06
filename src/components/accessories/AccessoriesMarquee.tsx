@@ -5,12 +5,12 @@ import { useEffect, useRef } from 'react'
 const MARQUEE_TEXT =
   '*** SYSTEM INITIALIZED *** // NO RESTOCKS // ALL SALES FINAL // GLOBAL SHIPPING AVAILABLE // ACCESSORIES CO. FW/24 // '
 
-export function RawSupplyMarquee() {
+export function AccessoriesMarquee() {
   const trackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const track = trackRef.current
-    const first = track?.querySelector('.raw-marquee-copy')
+    const first = track?.querySelector('.accessories-marquee-copy')
     if (!track || !(first instanceof HTMLElement)) return
 
     let animation: Animation | undefined
@@ -38,13 +38,13 @@ export function RawSupplyMarquee() {
   }, [])
 
   return (
-    <div className="raw-marquee">
-      <div className="raw-marquee-track" ref={trackRef}>
-        <span className="raw-marquee-copy">{MARQUEE_TEXT}</span>
-        <span className="raw-marquee-copy" aria-hidden>
+    <div className="accessories-marquee">
+      <div className="accessories-marquee-track" ref={trackRef}>
+        <span className="accessories-marquee-copy">{MARQUEE_TEXT}</span>
+        <span className="accessories-marquee-copy" aria-hidden>
           {MARQUEE_TEXT}
         </span>
-        <span className="raw-marquee-copy" aria-hidden>
+        <span className="accessories-marquee-copy" aria-hidden>
           {MARQUEE_TEXT}
         </span>
       </div>

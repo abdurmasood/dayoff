@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/shop', destination: '/tops', permanent: true },
       { source: '/obsidian', destination: '/manifesto', permanent: true },
+      { source: '/raw-supply', destination: '/accessories', permanent: true },
     ]
   },
 }

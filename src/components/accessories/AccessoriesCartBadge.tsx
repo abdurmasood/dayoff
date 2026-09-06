@@ -1,9 +1,9 @@
 'use client'
 
-import { useRawSupplyCart } from './raw-supply-cart'
+import { useAccessoriesCart } from './accessories-cart'
 
-export function RawSupplyCartBadge() {
-  const { cartCount } = useRawSupplyCart()
+export function AccessoriesCartBadge() {
+  const { cartCount } = useAccessoriesCart()
 
   return (
     <div className="cart-btn solid-shadow">

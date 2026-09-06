@@ -7,7 +7,7 @@ const spaceMono = Space_Mono({
   variable: '--font-space-mono',
 })
 
-export default function RawSupplyLayout({
+export default function AccessoriesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

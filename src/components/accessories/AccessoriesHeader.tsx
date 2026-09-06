@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { DepartmentNav } from '@/components/DepartmentNav'
-import { RawSupplyCartBadge } from './RawSupplyCartBadge'
+import { AccessoriesCartBadge } from './AccessoriesCartBadge'
 
 function HeaderBarcode() {
   return (
@@ -33,7 +33,7 @@ function HeaderBarcode() {
   )
 }
 
-export function RawSupplyHeader() {
+export function AccessoriesHeader() {
   return (
     <header className="page-header">
       <Link href="/" className="system-code">
@@ -41,7 +41,7 @@ export function RawSupplyHeader() {
         Day Off
       </Link>
       <DepartmentNav activeId="accessories" className="department-nav" />
-      <RawSupplyCartBadge />
+      <AccessoriesCartBadge />
       <h1 className="massive-title">ACCESSORIES.</h1>
       <div className="subtitle-block">
         <div>

@@ -1,7 +1,7 @@
 import { ProductCard } from './ProductCard'
 import { PRODUCTS } from './products'
 
-export function RawSupplyGrid() {
+export function AccessoriesGrid() {
   return (
     <main className="shop-container">
       {PRODUCTS.map((product) => (
