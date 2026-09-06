@@ -10,7 +10,7 @@ const PATTERN = `D D D D D
 
 export function SpecCell() {
   return (
-    <Cell className="c8 row-3">
+    <Cell className="c8 row-3" to="/jackets">
       <div className="data-row">
         <span>REF:</span>
         <span>8892-A</span>
