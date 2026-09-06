@@ -457,3 +457,107 @@
   background-color: var(--ink-color);
   color: var(--bg-color);
 }
+
+@media (max-width: 900px) {
+  html:has(.jackets),
+  body:has(.jackets) {
+    height: auto;
+    overflow: auto;
+  }
+
+  .jackets {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .jackets .poster {
+    max-width: none;
+    padding: 0.85rem 1rem 1.25rem;
+  }
+
+  .jackets .poster:not(.poster-product) .title-block,
+  .jackets .poster:not(.poster-product) .mid-section,
+  .jackets .poster:not(.poster-product) .side-massive,
+  .jackets .poster:not(.poster-product) .sub-footer {
+    display: none;
+  }
+
+  .jackets .poster:not(.poster-product) .header {
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink-color);
+  }
+
+  .jackets .lower-section {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .jackets .data-list {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .jackets .header-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'brand cart'
+      'nav nav';
+    align-items: center;
+  }
+
+  .jackets .index-link {
+    grid-area: brand;
+  }
+
+  .jackets .header-tools {
+    display: contents;
+  }
+
+  .jackets .department-nav {
+    grid-area: nav;
+    justify-content: flex-start;
+    gap: 0.45rem 0.75rem;
+    font-size: 0.62rem;
+    width: 100%;
+  }
+
+  .jackets .header-bar .cart-btn {
+    grid-area: cart;
+    justify-self: end;
+    padding: 0.3rem 0;
+    border: 0;
+    border-bottom: 2px solid var(--ink-color);
+  }
+
+  .jackets .index-link {
+    white-space: nowrap;
+    padding-left: 0;
+  }
+
+  .jackets .data-item {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.6rem;
+    padding: 1rem 0;
+    min-height: 3rem;
+    align-items: baseline;
+    border-bottom: 2px solid var(--ink-color);
+    font-size: 0.78rem;
+  }
+
+  .jackets .poster-product .product-title {
+    font-size: clamp(2.5rem, 14vw, 5rem);
+  }
+
+  .jackets .poster-product .add-to-cart {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  .jackets .poster-product .image-col {
+    min-height: 16rem;
+  }
+}
