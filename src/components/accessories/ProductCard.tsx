@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Product, StickerKind } from './products'
-import { useRawSupplyCart } from './raw-supply-cart'
+import { useAccessoriesCart } from './accessories-cart'
 
 type CartStatus = 'idle' | 'adding' | 'added'
 
@@ -87,7 +87,7 @@ function ProductSticker({ kind }: { kind: StickerKind }) {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { addToCart } = useRawSupplyCart()
+  const { addToCart } = useAccessoriesCart()
   const [status, setStatus] = useState<CartStatus>('idle')
 
   function handleAdd() {
