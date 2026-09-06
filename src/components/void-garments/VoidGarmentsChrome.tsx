@@ -4,7 +4,7 @@ import { VoidGarmentsCartBadge } from './VoidGarmentsCartBadge'
 
 export function VoidGarmentsChrome() {
   return (
-    <>
+    <div className="header-bar">
       <Link href="/" className="index-link">
         <span className="index-link-arrow" aria-hidden>
           ←
@@ -15,6 +15,6 @@ export function VoidGarmentsChrome() {
         <DepartmentNav activeId="jackets" className="department-nav" />
         <VoidGarmentsCartBadge />
       </div>
-    </>
+    </div>
   )
 }
