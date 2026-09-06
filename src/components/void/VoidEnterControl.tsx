@@ -1,13 +1,17 @@
 'use client'
 
 import { FormEvent, useEffect, useRef, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-type SequencePhase = 'form' | 'loading' | 'granted'
+type SequencePhase = 'form' | 'loading' | 'pending' | 'granted'
 
 export function VoidEnterControl() {
-  const [phase, setPhase] = useState<SequencePhase>('form')
+  const joined = useSearchParams().get('joined')
+  const [phase, setPhase] = useState<SequencePhase>(
+    joined === '1' ? 'granted' : 'form',
+  )
   const [email, setEmail] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useState(joined === '0' ? 'Confirmation failed' : '')
   const submittingRef = useRef(false)
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -58,7 +62,7 @@ export function VoidEnterControl() {
         throw new Error(payload?.error ?? 'Subscription failed')
       }
 
-      setPhase('granted')
+      setPhase('pending')
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Subscription failed')
       setPhase('form')
@@ -117,6 +121,13 @@ export function VoidEnterControl() {
 
       {phase === 'loading' ? (
         <div className="action-title action-title-compact">LOADING...</div>
+      ) : null}
+
+      {phase === 'pending' ? (
+        <>
+          <div className="action-title action-title-compact">CHECK YOUR INBOX</div>
+          <div className="action-sub">Confirm to join the list</div>
+        </>
       ) : null}
 
       {phase === 'granted' ? (

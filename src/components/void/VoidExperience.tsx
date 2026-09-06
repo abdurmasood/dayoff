@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { VoidArchiveDate } from './VoidArchiveDate'
 import { VoidEnterControl } from './VoidEnterControl'
 
@@ -34,7 +35,9 @@ export function VoidExperience() {
       <div className="center-stage">
         <div className="crosshair-tl" />
         <div className="crosshair-br" />
-        <VoidEnterControl />
+        <Suspense>
+          <VoidEnterControl />
+        </Suspense>
       </div>
 
       <div className="specs-overlay interactive">
