@@ -187,6 +187,7 @@
   line-height: 0.7;
   letter-spacing: -0.08em;
   margin-top: -5%;
+  pointer-events: none;
 }
 
 .void-garments .lower-section {
