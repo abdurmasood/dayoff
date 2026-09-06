@@ -28,7 +28,8 @@
   text-decoration: none;
 }
 
-.void button {
+.void button,
+.void input {
   font: inherit;
   color: inherit;
   text-transform: inherit;
@@ -204,12 +205,14 @@
 .void .action-block {
   background: var(--ink);
   color: var(--paper);
+  margin: 0;
   padding: 2rem;
   border: 4px solid var(--paper);
   outline: 2px solid var(--ink);
   text-align: center;
   transition: all 0.1s steps(2);
   position: relative;
+  cursor: pointer;
 }
 
 .void .action-block:hover {
@@ -217,6 +220,51 @@
   color: var(--ink);
   outline: 2px solid var(--paper);
   border: 4px solid var(--ink);
+}
+
+.void .action-block-static,
+.void .action-block-static:hover {
+  background: var(--ink);
+  color: var(--paper);
+  outline: 2px solid var(--ink);
+  border: 4px solid var(--paper);
+  cursor: default;
+  min-width: 22rem;
+}
+
+.void .action-input {
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid currentColor;
+  text-align: center;
+  text-transform: none;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  outline: none;
+  user-select: text;
+  caret-color: currentColor;
+}
+
+.void .action-input::placeholder {
+  color: currentColor;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+.void .action-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .void .action-title {
