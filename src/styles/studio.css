@@ -191,11 +191,25 @@ a.cell:visited {
 }
 
 .manifesto {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
   font-size: 0.55rem;
+  letter-spacing: inherit;
+  padding: 0;
   text-align: justify;
+  text-transform: inherit;
   line-height: 1.1;
   width: 60%;
   align-self: flex-end;
+}
+
+.manifesto:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .c5 {

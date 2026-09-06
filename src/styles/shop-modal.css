@@ -88,9 +88,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: clamp(0.95rem, 2.6vw, 2rem);
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 0.08em;
+  padding: 0.75rem;
+  text-align: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -110,6 +112,9 @@
 .shop-cat span {
   position: relative;
   z-index: 2;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  line-height: 1.05;
   transition: transform 0.1s;
 }
 
@@ -147,4 +152,46 @@
 
 .shop-cat:hover .cat-meta {
   color: var(--bg);
+}
+
+.shop-modal-close:focus-visible {
+  outline: 2px solid var(--bg);
+  outline-offset: 2px;
+}
+
+.shop-cat:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -4px;
+}
+
+@media (max-width: 768px) {
+  .shop-modal {
+    width: min(94vw, 24rem);
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .shop-modal-title {
+    font-size: clamp(1.1rem, 6vw, 2rem);
+  }
+
+  .shop-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-cat {
+    font-size: clamp(1.1rem, 6vw, 1.75rem);
+    letter-spacing: 0.08em;
+    min-height: 4.5rem;
+    border-right: none;
+  }
+
+  .shop-cat:nth-child(3),
+  .shop-cat:nth-child(4) {
+    border-bottom: var(--border);
+  }
+
+  .shop-cat:last-child {
+    border-bottom: none;
+  }
 }
