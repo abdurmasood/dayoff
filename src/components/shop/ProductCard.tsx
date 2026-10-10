@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: Product }) {
     if (product.soldOut || status !== 'idle') return
     setStatus('adding')
     window.setTimeout(() => {
-      addToCart()
+      addToCart(product.id)
       setStatus('added')
       window.setTimeout(() => setStatus('idle'), 1500)
     }, 500)
