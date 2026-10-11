@@ -1,5 +1,5 @@
 import type Stripe from 'stripe'
-import { getStripe } from '@/lib/stripe'
+import { getStripe } from '@/server/stripe'
 
 const PAID_EVENTS = new Set<Stripe.Event.Type>([
   'checkout.session.completed',

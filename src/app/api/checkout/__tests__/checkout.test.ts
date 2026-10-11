@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { quoteShopCart } from './shop-catalog'
+import { quoteShopCart } from '../checkout'
 
 describe('quoteShopCart', () => {
   it('prices a shop product in cents', () => {

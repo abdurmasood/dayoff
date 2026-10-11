@@ -1,11 +1,15 @@
-export type ShopPrice = {
+import 'server-only'
+import { MAX_SHOP_QUANTITY } from '@/lib/shop'
+import { getStripe } from '@/server/stripe'
+
+type ShopPrice = {
   id: string
   name: string
   unitAmount: number
   sellable: boolean
 }
 
-export const SHOP_PRICES: ShopPrice[] = [
+const SHOP_PRICES: ShopPrice[] = [
   { id: '8892-A', name: 'KEVLAR VEST V.1', unitAmount: 85000, sellable: true },
   { id: '7710-B', name: 'TACTICAL SHELL', unitAmount: 120000, sellable: true },
   { id: '4421-C', name: 'ISOLATION PANTS', unitAmount: 65000, sellable: false },
@@ -15,8 +19,6 @@ export const SHOP_PRICES: ShopPrice[] = [
 ]
 
 const pricesById = new Map(SHOP_PRICES.map((product) => [product.id, product]))
-
-export const MAX_SHOP_QUANTITY = 10
 
 export type QuotedLine = {
   id: string
@@ -82,4 +84,48 @@ export function quoteShopCart(
   }
 
   return { ok: true, lines }
+}
+
+const LETTERS = 'abcdefghijklmnopqrstuvwxyz'
+
+function shopIntegrationIdentifier() {
+  let suffix = ''
+  for (let index = 0; index < 8; index += 1) {
+    suffix += LETTERS[Math.floor(Math.random() * LETTERS.length)]
+  }
+
+  return `dayoff_shop_${suffix}`
+}
+
+export async function checkout(
+  body: unknown,
+  origin: string,
+): Promise<{ status: number; body: { url?: string; error?: string } }> {
+  const quote = quoteShopCart(body)
+  if (!quote.ok) {
+    return { status: 400, body: { error: quote.error } }
+  }
+
+  const session = await getStripe().checkout.sessions.create({
+    mode: 'payment',
+    line_items: quote.lines.map((line) => ({
+      quantity: line.quantity,
+      price_data: {
+        currency: 'usd',
+        unit_amount: line.unitAmount,
+        product_data: {
+          name: line.name,
+        },
+      },
+    })),
+    success_url: `${origin}/tops/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${origin}/tops/checkout/cancel`,
+    integration_identifier: shopIntegrationIdentifier(),
+  })
+
+  if (!session.url) {
+    return { status: 500, body: { error: 'Checkout unavailable' } }
+  }
+
+  return { status: 200, body: { url: session.url } }
 }

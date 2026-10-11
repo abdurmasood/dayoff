@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getStripe } from '@/lib/stripe'
+import { getStripe } from '@/server/stripe'
 import '@/styles/shop.css'
 
 export default async function CheckoutSuccessPage({

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useMemo, useState, type ReactNode } from 'react'
-import { MAX_SHOP_QUANTITY } from '@/lib/shop-catalog'
+import { MAX_SHOP_QUANTITY } from '@/lib/shop'
 import { ShopCartContext, type ShopLine } from './shop-cart'
 
 export function ShopExperience({ children }: { children: ReactNode }) {
