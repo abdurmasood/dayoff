@@ -1,3 +1,9 @@
+/**
+ * Behavior for POST /api/subscribe and GET /api/subscribe/confirm.
+ *
+ * Checks the email, limits requests, and sends or confirms the signup.
+ */
+
 import 'server-only'
 import { createHmac, timingSafeEqual } from 'node:crypto'
 import { LoopsClient } from 'loops'

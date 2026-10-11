@@ -1,3 +1,9 @@
+/**
+ * GET /api/subscribe/confirm
+ *
+ * Checks the confirmation link and redirects to /void.
+ */
+
 import { confirm } from '../subscribe'
 
 export async function GET(request: Request) {

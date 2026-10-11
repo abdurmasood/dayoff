@@ -1,3 +1,9 @@
+/**
+ * POST /api/subscribe
+ *
+ * Reads the email and sends the confirmation link.
+ */
+
 import { subscribe } from './subscribe'
 
 function clientKey(request: Request) {

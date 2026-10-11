@@ -1,3 +1,9 @@
+/**
+ * POST /api/checkout
+ *
+ * Reads the cart and returns the Stripe Checkout URL.
+ */
+
 import { checkout } from './checkout'
 
 export async function POST(request: Request) {

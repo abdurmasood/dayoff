@@ -1,3 +1,9 @@
+/**
+ * Behavior for POST /api/checkout.
+ *
+ * Checks the cart and creates the Stripe session.
+ */
+
 import 'server-only'
 import { MAX_SHOP_QUANTITY } from '@/lib/shop'
 import { getStripe } from '@/server/stripe'

@@ -1,3 +1,9 @@
+/**
+ * POST /api/stripe/webhook
+ *
+ * Confirms Stripe signed the event and that the checkout was paid.
+ */
+
 import type Stripe from 'stripe'
 import { getStripe } from '@/server/stripe'
 
