@@ -198,6 +198,23 @@
   text-transform: uppercase;
 }
 
+.shop button.cart-btn {
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.shop button.cart-btn:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.shop button.cart-btn:disabled:hover {
+  background: transparent;
+  color: inherit;
+  border-color: #888;
+}
+
 .shop .cart-btn:hover {
   background: var(--fg);
   color: var(--bg);
@@ -228,6 +245,25 @@
   .shop .cart-btn:hover .cart-arrow {
     animation: none;
   }
+}
+
+.shop button.cart-btn:disabled:hover .cart-arrow {
+  animation: none;
+}
+
+.shop.shop-checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.shop.shop-checkout p,
+.shop.shop-checkout a {
+  font-family: var(--mono);
+  font-size: 0.9rem;
 }
 
 .shop .page-title {

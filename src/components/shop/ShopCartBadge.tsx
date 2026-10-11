@@ -3,11 +3,24 @@
 import { useShopCart } from './shop-cart'
 
 export function ShopCartBadge() {
-  const { cartCount } = useShopCart()
+  const { cartCount, checkout, checkingOut, checkoutError } = useShopCart()
+  const label = checkingOut
+    ? 'CHECKOUT...'
+    : checkoutError
+      ? 'CHECKOUT FAILED'
+      : `CART [${cartCount}]`
 
   return (
-    <div className="cart-btn">
-      CART [{cartCount}] <span className="cart-arrow">→</span>
-    </div>
+    <button
+      type="button"
+      className="cart-btn"
+      disabled={cartCount === 0 || checkingOut}
+      title={checkoutError ?? undefined}
+      onClick={() => {
+        void checkout()
+      }}
+    >
+      {label} <span className="cart-arrow">→</span>
+    </button>
   )
 }

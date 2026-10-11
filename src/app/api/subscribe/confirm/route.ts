@@ -1,13 +1,14 @@
-import { addToLoopsList } from '@/lib/loops'
-import { handleConfirm } from '@/lib/subscribe'
-import { verifySubscribeToken } from '@/lib/subscribe-token'
+/**
+ * GET /api/subscribe/confirm
+ *
+ * Checks the confirmation link and redirects to /void.
+ */
+
+import { confirm } from '../subscribe'
 
 export async function GET(request: Request) {
   const token = new URL(request.url).searchParams.get('token')
-  const result = await handleConfirm(token, {
-    subscribe: addToLoopsList,
-    resolveEmail: verifySubscribeToken,
-  })
+  const result = await confirm(token)
 
   const destination = new URL('/void', request.url)
   destination.searchParams.set('joined', result.status === 200 ? '1' : '0')

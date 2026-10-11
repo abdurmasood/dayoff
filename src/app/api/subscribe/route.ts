@@ -1,10 +1,10 @@
-import { sendConfirmationEmail } from '@/lib/loops'
-import { createRateLimiter } from '@/lib/rate-limit'
-import { handleSubscribe } from '@/lib/subscribe'
-import { createSubscribeToken } from '@/lib/subscribe-token'
+/**
+ * POST /api/subscribe
+ *
+ * Reads the email and sends the confirmation link.
+ */
 
-const allowIp = createRateLimiter({ windowMs: 15 * 60 * 1000, max: 5 })
-const allowEmail = createRateLimiter({ windowMs: 60 * 60 * 1000, max: 3 })
+import { subscribe } from './subscribe'
 
 function clientKey(request: Request) {
   const forwarded = request.headers.get('x-forwarded-for')
@@ -25,20 +25,6 @@ export async function POST(request: Request) {
   }
 
   const origin = new URL(request.url).origin
-  const result = await handleSubscribe(body, {
-    allowRequest(email) {
-      const ipOk = allowIp(clientKey(request))
-      const emailOk = allowEmail(email)
-      return ipOk && emailOk
-    },
-    async requestConfirmation(email) {
-      const token = createSubscribeToken(email)
-      await sendConfirmationEmail(
-        email,
-        `${origin}/api/subscribe/confirm?token=${encodeURIComponent(token)}`,
-      )
-    },
-  })
-
+  const result = await subscribe(body, { origin, clientKey: clientKey(request) })
   return Response.json(result.body, { status: result.status })
 }
