@@ -1,21 +1,40 @@
-# Day Off
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/readme/wordmark-on-dark.svg">
+    <img src="docs/readme/wordmark-on-light.svg" alt="Day Off" width="360">
+  </picture>
+</p>
 
-## Setup
+<br>
 
-```sh
-pnpm install
-pnpm dev
-```
+<h3 align="center">Once physical constraints are broken,<br>structural integrity dictates form.</h3>
 
-Open http://localhost:3000.
+<p align="center">—</p>
 
-Copy `.env.example` to `.env` only if you need email signup:
+<p align="center">
+  <a href="https://dayoff.fashion">dayoff.fashion</a>
+  &nbsp;·&nbsp;
+  <a href="https://dayoff.fashion/manifesto">/manifesto</a>
+  &nbsp;·&nbsp;
+  <a href="https://dayoff.fashion/void">/void</a>
+</p>
 
-- `LOOPS_API_KEY`
-- `LOOPS_MAILING_LIST_ID`
+<p align="center"><sub><code>pnpm install</code> · <code>pnpm dev</code> · pushes to <code>main</code> ship to Vercel</sub></p>
 
-## Deploy
+<br>
 
-Pushes to `main` deploy to Vercel.
+<p align="center">
+  <sub>RUN</sub><br>
+  <code>pnpm install</code> <code>pnpm dev</code> <code>pnpm test</code> <code>pnpm lint</code>
+</p>
 
-Production: https://dayoff.fashion
+<p align="center">
+  <sub>ENV · only for checkout or email signup · copy .env.example</sub><br>
+  <code>STRIPE_SECRET_KEY</code> <code>STRIPE_WEBHOOK_SECRET</code><br>
+  <code>LOOPS_API_KEY</code> <code>LOOPS_MAILING_LIST_ID</code>
+</p>
+
+<p align="center">
+  <sub>SHIP</sub><br>
+  push <code>main</code> → Vercel
+</p>
